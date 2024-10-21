@@ -1,4 +1,6 @@
+import requests
 from fasthtml.common import *
+
 app, rt = fast_app()
 
 def common_header():
@@ -46,6 +48,9 @@ def common_css():
 # Home Page
 @rt('/')
 def get():
+    response = requests.get("http://127.0.0.1:8000/message")
+    data = response.json()
+    print(data)
     return Html(
         Head(
             Meta(charset='UTF-8'),
@@ -55,7 +60,7 @@ def get():
         ),
         Body(
             common_header(),
-            H1('Welcome to Space Infinity')
+            H1('Home Page')
         )
     )
 
