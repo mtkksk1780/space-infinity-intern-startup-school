@@ -1,109 +1,30 @@
-import requests
 from fasthtml.common import *
+from components.header import header_html, header_css
+from routes.home import home_page
+from routes.about import about_page
+from routes.submission import submission_page
+from routes.login import login_page
 
 app, rt = fast_app()
 
-def common_header():
-    return Header(
-        Nav(
-            A('About Us', href='/about'),
-            A('Submission', href='/submission'),
-            A('Feedback', href='/feedback')
-        )
-    )
-
-def common_css():
-    return Style('''
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background-color: #F8F8F8;
-      border-bottom: 1px solid #ccc;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-    nav a {
-      margin: 0 30px;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      font-size: 24px;
-    }
-    nav a:hover {
-      color: #007BFF;
-    }
-    @media (max-width: 768px) {
-      nav a {
-        margin: 0 10px;
-        font-size: 18px;
-      }
-    }
-    ''')
-
 # Home Page
 @rt('/')
-def get():
-    response = requests.get("http://127.0.0.1:8000/message")
-    data = response.json()
-    print(data)
-    return Html(
-        Head(
-            Meta(charset='UTF-8'),
-            Meta(name='viewport', content='width=device-width, initial-scale=1.0'),
-            Title('Space Infinity'),
-            common_css()
-        ),
-        Body(
-            common_header(),
-            H1('Home Page')
-        )
-    )
+def home_page_handler():
+    return home_page()
 
 # About Page
 @rt('/about')
-def about_page():
-    return Html(
-        Head(
-            Title('About Us'),
-            common_css()
-        ),
-        Body(
-            common_header(),
-            H1('About Us'),
-        )
-    )
+def about_page_handler():
+    return about_page()
 
 # Submission Page
 @rt('/submission')
-def submission_page():
-    return Html(
-        Head(
-            Title('Submission'),
-            common_css()
-        ),
-        Body(
-            common_header(),
-            H1('Submission Page')
-        )
-    )
+def submission_page_handler():
+    return submission_page()
 
-# Feedback Page
-@rt('/feedback')
-def feedback_page():
-    return Html(
-        Head(
-            Title('Feedback'),
-            common_css()
-        ),
-        Body(
-            common_header(),
-            H1('Feedback Page')
-        )
-    )
+# Login Page
+@rt('/login')
+def login_page_handler():
+    return login_page()
 
 serve()
