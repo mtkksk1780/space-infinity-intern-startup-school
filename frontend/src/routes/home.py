@@ -1,6 +1,8 @@
 import requests
 from fasthtml.common import *
+from global_css import global_css
 from components.header import header_html, header_css
+from components.footer import footer_html, footer_css
 
 
 def home_page():
@@ -9,8 +11,10 @@ def home_page():
             Meta(charset='UTF-8'),
             Meta(name='viewport', content='width=device-width, initial-scale=1.0'),
             Title('Home Page'),
+            global_css(),
             header_css(),
-            home_page_css()
+            home_page_css(),
+            footer_css(),
         ),
         Body(
             header_html(),
@@ -80,18 +84,12 @@ def home_page():
 
                 _class='container06',
             ),
-
-        )
+            footer_html(),
+        ),
     )
 
 def home_page_css():
     return Style('''
-
-    Body {
-        font-family: 'Arial';
-        margin: 0;
-        padding: 0;
-    }
 
     .container01 {
         width: 100%;
