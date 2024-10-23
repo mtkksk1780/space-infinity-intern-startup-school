@@ -1,5 +1,4 @@
 from fasthtml.common import *
-from components.header import header_html, header_css
 from routes.home import home_page
 from routes.about import about_page
 from routes.submission import submission_page
