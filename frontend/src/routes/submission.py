@@ -7,7 +7,7 @@ def create_submission_page():
     return Html(
         Head(
             Title('Submission'),
-            Link(rel="stylesheet", href="/static/style.css"),
+            Link(rel="stylesheet", href="../../static/style.css"),
         ),
         Body(
             header_html(),

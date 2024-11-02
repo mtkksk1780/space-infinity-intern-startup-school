@@ -8,7 +8,7 @@ def create_home_page():
     return Html(
         Head(
             Title("Home Page"),
-            Link(rel="stylesheet", href="/static/style.css"),
+            Link(rel="stylesheet", href="../../static/style.css"),
         ),
         Body(
             header_html(),

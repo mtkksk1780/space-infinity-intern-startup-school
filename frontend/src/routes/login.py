@@ -7,7 +7,7 @@ def create_login_page():
     return Html(
         Head(
             Title('Login'),
-            Link(rel="stylesheet", href="/static/style.css"),
+            Link(rel="stylesheet", href="../../static/style.css"),
         ),
         Body(
             header_html(),
