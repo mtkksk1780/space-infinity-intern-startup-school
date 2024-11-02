@@ -7,12 +7,12 @@ from components.footer import footer_html
 def create_about_page():
     return Html(
         Head(
-            Title('About Us'),
-            Link(rel="stylesheet", href="/static/style.css"),
+            Title("About Us"),
+            Link(rel="stylesheet", href="../../static/style.css"),
         ),
         Body(
             header_html(),
-            H1('About Us'),
+            H1("About Us"),
             footer_html(),
         )
     )

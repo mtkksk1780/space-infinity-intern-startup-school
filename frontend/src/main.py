@@ -7,22 +7,22 @@ from routes.login import create_login_page
 app, rt = fast_app()
 
 # Home Page
-@rt('/')
+@rt("/")
 def index():
     return create_home_page()
 
 # About Page
-@rt('/about')
+@rt("/about")
 def about():
     return create_about_page()
 
 # Submission Page
-@rt('/submission')
+@rt("/submission")
 def submission():
     return create_submission_page() 
 
 # Login Page
-@rt('/login')
+@rt("/login")
 def login():
     return login_page()
 
