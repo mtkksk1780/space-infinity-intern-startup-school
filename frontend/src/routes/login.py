@@ -6,12 +6,12 @@ from components.footer import footer_html
 def create_login_page():
     return Html(
         Head(
-            Title('Login'),
+            Title("Login"),
             Link(rel="stylesheet", href="../../static/style.css"),
         ),
         Body(
             header_html(),
-            H1('Login Page'),
+            H1("Login Page"),
             footer_html(),
         )
     )
