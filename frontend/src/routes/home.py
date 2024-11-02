@@ -1,199 +1,104 @@
 import requests
 from fasthtml.common import *
-from global_css import global_css
-from components.header import header_html, header_css
-from components.footer import footer_html, footer_css
+from components.header import header_html
+from components.footer import footer_html
 
 
-def home_page():
+def create_home_page():
     return Html(
         Head(
-            Meta(charset='UTF-8'),
-            Meta(name='viewport', content='width=device-width, initial-scale=1.0'),
-            Title('Home Page'),
-            global_css(),
-            header_css(),
-            home_page_css(),
-            footer_css(),
+            Title("Home Page"),
+            Link(rel="stylesheet", href="/static/style.css"),
         ),
         Body(
             header_html(),
-            Div(
-                Img(src='../../images/home/home01.svg', alt='home01', _class='full-width-image'),
+            Section(
                 Div(
-                    H1('Unleash creativity,'),
-                    H1('expand your'),
-                    H1('potential to infinity.'),
-                    Button(
-                        'Join Now',
-                        _class='button',
+                    Img(src="../../static/images/space_infinity_banner.png", alt="Hero Image", _class="hero-img"),
+                    Img(src="../../static/images/possibilities.png", alt="The Possibilities Are Endless",_class="possibility-img"),
+   
+                    Div(  
+                        Button("Join Now", _class="join_btn"),
+                        _class="hero-content"
                     ),
-                    _class='container02'
-                ),
-                _class='container01'
+                    _class="hero-section"
+                )
             ),
-            Div(
-                H1('4 Weeks'),
-                H1('Develop Your Idea'),
-                H1('Launch'),
-                _class='container03'
-            ),
-            Img(src='../../images/home/home02.svg', alt='home02', _class='full-width-image'), 
-            Div(
-                H1('Welcome to Space Infinity!'),   
-                Div(
-                    P('Launch your creativity, develop bold ideas, and transform visions into reality with our four-week program designed to push boundaries. Inspired by the vast cosmos and Bulidspace community, Space Infinity connects you with a community that fuels your growth.'),
-                    Img(src='../../images/home/home03.svg', alt='home03', _class='half-width-image'),
-                    _class='container05',
-                ),    
-                _class='container04',
-            ),
-            Hr(_class='horizontal-line'),
-            Div(
-                H1('Schedule'),
-                Div(
-                    Div(
-                        H2('1st week', style ='color: #E11F2E;'),
-                        H3('Pitch Ideas'),
-                        P('Decide what your goals are'),
-                        _class='container08',
-                    ),
-                    Div(
-                        H2('2nd week', style ='color: #F5BC18;'),
-                        H3('Develop your ideas'),
-                        P('Develop your project & Get/give feedback from fellow participants'),
-                        _class='container08',
-                    ),    
-                    _class='container07',
-                ),
-                Div(
-                    Div(
-                        H2('3rd week', style ='color: #2C699D;'),
-                        H3('Prepare for launch'),
-                        P('Develop your project & Start preparing the launch'),
-                        _class='container08',
-                    ), 
-                    Div(
-                        H2('4th week', style ='color: #008753;'),
-                        H3('Launch your project'),
-                        P('Learn from other participants’ projects'),
-                        _class='container08',
-                    ),
-                    _class='container07',
-                ),
 
-                _class='container06',
+            Section(
+                Div(
+                    H2("4 Weeks", _class="week"),
+                    H2("Develop Your Idea", _class="develop_your_idea"),
+                    H2("Launch", _class="launch"),
+                    _class="steps-section"
+                )
+            ),
+
+            Section(
+                Div(
+                    Div(
+                        Img(src="../../static/images/develop_idea.png", alt="Develop Your Idea", _class="step-img")
+                    ),
+                    _class="develop-section"
+                )
+            ),
+
+            Section(
+                Div(
+                    Img(src="../../static/images/welcome.png", alt="Welcom", _class="welcome-img")
+                ),
+                _class="welcome-space"
+            ),
+            
+            Section(
+                Div(
+                    Div(
+                       
+                        P("Launch your creativity, develop bold ideas, and transform visions into reality with our four-week program designed to push boundaries. Inspired by the vast cosmos and Buildspace community, Space Infinity connects you with a community that fuels your growth.", _class="creativity"),
+                        _class="welcome-text"
+                    ),
+                    Div(
+                        Img(src="../../static/images/layer_3.png", alt="Welcome Image",_class="laer_3"),
+                       
+                        Img(src="../../static/images/isolation_mode.png", 
+                        alt="isolation Image",_class="isolation"),
+                       
+                        Img(src="../../static/images/layer_1-2.png",alt="small_star",_class="small_star"),
+                        Img(src="../../static/images/layer_1-3.png",alt="large_star",_class="large_star"),
+                        Img(src="../../static/images/layer_1.png",alt="red_circle",_class="red_circler"),
+                        _class="welcome-image"
+                    ),
+                    _class="welcome-container"
+                )
+            ),
+
+            Section(
+                Img(src="../../static/images/schedule.png",alt="schedule",_class="schedule"),
+
+                Div(
+                    Div(
+                        H2("1st Week"),
+                        H3("Pitch Ideas"),
+                        P("Decide what your goals are.")
+                    ),
+                    Div(
+                        H2("2nd Week"),
+                        H3("Develop your ideas"),
+                        P("Develop your project & Get/give feedback from fellow participants")
+                    ),
+                    Div(
+                        H2("3rd Week"),
+                        H3("Prepare for launch"),
+                        P("Develop your project & start preparing.")
+                    ),
+                    Div(
+                        H2("4th Week"),
+                        H3("Launch your project"),
+                        P("Learn from other participants' projects.")
+                    ),
+                    _class="schedule-container"
+                )
             ),
             footer_html(),
-        ),
+        )
     )
-
-def home_page_css():
-    return Style('''
-
-    .container01 {
-        width: 100%;
-        position: relative;
-    }
-
-    .container02 {
-        width: 35%;
-        position: absolute;
-        top:300px;
-        left:40px;
-        margin:0 0 0 20px;
-        background-color: orange;
-    }
-
-    .container03 {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 50px;
-        font-size: 25px;
-    }
-
-    .container04 {
-        margin: 0 50px 0 50px;
-        text-align: left;
-        font-size: 40px;
-
-        p {
-            font-size: 30px;
-            line-height: 1.5;
-            margin: 0 0 20px 0;
-        }
-    }
-
-    .container05 {
-        display: flex;
-        justify-content: space-around;
-        text-align: left;
-
-        p {
-            font-size: 30px;
-            line-height: 1.5;
-            margin: 0 0 20px 0;
-        }
-
-        img {
-            margin: 0 0 0 40px;
-        }
-    }
-
-    .container06 {
-        margin: 0 50px 0 50px;
-        text-align: left;
-        font-size: 30px;
-
-        p {
-            font-size: 30px;
-            line-height: 1.5;
-            margin: 0 0 20px 0;
-        }
-    }
-
-    .container07 {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    .container08 {
-        width: 45%;
-        margin: 20px 50px 20px 50px;
-        border: 5px solid black;
-        border-radius: 50px;
-        text-align: center;
-    }
-
-    .full-width-image {
-        width: 100%;
-        height: auto;
-        margin: 0 0 30px 0;
-    }
-
-    .half-width-image {
-        width: 50%;
-        height: auto;
-        margin: 0 0 30px 0;
-    }
-
-    .button {
-        background-color: #2C699D;
-        border: none;
-        color: white;
-        padding: 14px 40px;
-        margin: 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-    .horizontal-line {
-        width: 90%;
-        height: 1px;
-        background-color: #000000;
-        border: none;
-    }
-    ''')
