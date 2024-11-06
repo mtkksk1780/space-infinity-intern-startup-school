@@ -14,3 +14,45 @@ model Message {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
+
+model User {
+    id        String     @id @default(uuid())
+    email     String     @unique
+    password  String?
+    name      String?
+    role      String
+    Project   Project?   @relation(fields: [projectId], references: [id])
+    projectId String?
+    Feedback  Feedback[]
+}
+
+model Project {
+    id            String       @id @default(uuid())
+    name          String
+    one_liner     String
+    description   String
+    register_date DateTime     @default(now())
+    users         User[]
+    Submission    Submission[]
+}
+
+model Submission {
+    id              String     @id @default(uuid())
+    projectId       String
+    week            Int
+    progressRate    Int
+    progressComment String
+    outputUrl       String?
+    Project         Project    @relation(fields: [projectId], references: [id])
+    Feedback        Feedback[]
+}
+
+model Feedback {
+    id                String     @id @default(uuid())
+    submissionId      String
+    userId            String
+    evaluationRate    Int
+    evaluationComment String
+    User              User       @relation(fields: [userId], references: [id])
+    Submission        Submission @relation(fields: [submissionId], references: [id])
+}
