@@ -16,23 +16,23 @@ model Message {
 }
 
 model User {
-    id        String     @id @default(uuid())
-    email     String     @unique
-    password  String?
-    name      String?
-    role      String
-    Project   Project?   @relation(fields: [projectId], references: [id])
-    projectId String?
-    Feedback  Feedback[]
+    id       String     @id @default(uuid())
+    email    String     @unique
+    password String?
+    name     String?
+    role     String
+    Project  Project[]
+    Feedback Feedback[]
 }
 
 model Project {
     id            String       @id @default(uuid())
     name          String
-    one_liner     String
+    oneLiner      String
     description   String
     register_date DateTime     @default(now())
-    users         User[]
+    userId        String
+    User          User         @relation(fields: [userId], references: [id])
     Submission    Submission[]
 }
 

@@ -1,7 +1,6 @@
 from fastapi import HTTPException
 from src import prisma
 
-
 # Note: Need duplication check (projectId and week) before registering progress
 async def register_progress(
     # project_name: str,
