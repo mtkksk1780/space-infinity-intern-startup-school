@@ -10,13 +10,19 @@ def footer_html():
         _class="fotter-section"
       ),
       Div(
-        Div(
-          Input(placeholder="Type your email", _class="footer_input"),
-          Button("Subscribe", _class="footer_btn"),
+        Form(
+          Input(placeholder="Type your email", name="email", _class="footer_input"),
+          Button("Subscribe", type="submit", _class="footer_btn"),
+          action="http://127.0.0.1:8000/footer",
+          method="post",
+          target="hidden_iframe",
         ),
         _class="footer_subscribe"
       ),
         
+      # hidden iframe to handle the response
+      Iframe(name="hidden_iframe", style="display:none;"),
+
       # Links 
       Div(
         A("Home Page", href="/"),
