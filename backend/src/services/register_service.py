@@ -1,18 +1,19 @@
 from fastapi import HTTPException
 from src import prisma
 
-# Note: Need duplication check (projectId and week) before registering user information
+# Note: Need duplication check (email) before registering user information
 async def register(
     email: str,
     user_name: str,
-    password: str
+    password: str,
+    role: str
 ):
     try:
         result = await prisma.user.create(data={
             "email": email,
             "password": password,
             "name": user_name,
-            "role": "Member",
+            "role": role,
         })
         return result
     except Exception as e:
