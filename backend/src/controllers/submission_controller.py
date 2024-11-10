@@ -19,6 +19,7 @@ async def register_progress(
         print("submission_controller.py result:", result)
         if not result:
             raise HTTPException(status_code=404, detail="Error registering progress (Controller)")
+            return "Error registering progress"
         return "Progress registered successfully"
     except Exception as e:
         print({e})
