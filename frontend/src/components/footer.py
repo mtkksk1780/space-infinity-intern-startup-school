@@ -1,4 +1,6 @@
 from fasthtml.common import *
+from urllib.parse import parse_qs
+from components.utils import *
 
 # Footer
 def footer_html():
@@ -11,18 +13,14 @@ def footer_html():
       ),
       Div(
         Form(
-          Input(placeholder="Type your email", name="email", _class="footer_input"),
-          Button("Subscribe", type="submit", _class="footer_btn"),
-          action="http://127.0.0.1:8000/footer",
-          method="post",
-          target="hidden_iframe",
+          Input(placeholder="Type your email", name="email", _class="footer_input input-form"),
+          Button("Subscribe", type="submit", _class="footer_btn submit-btn"),
+          **get_form_attributes("/footer"),
         ),
         _class="footer_subscribe"
       ),
-        
-      # hidden iframe to handle the response
-      Iframe(name="hidden_iframe", style="display:none;"),
-
+      # Response Iframe
+      add_iframe(),
       # Links 
       Div(
         A("Home Page", href="/"),
@@ -31,8 +29,7 @@ def footer_html():
         A("Progress Tracking", href="#"),
         A("Log In", href="#"),
         _class="footer-links"
-      ),
-        
+      ),     
       # Contact
       Div(
         P("Contact Us"),
@@ -42,5 +39,7 @@ def footer_html():
         _class="footer-contact"
       ),
       _class="footer-container"
-    )
+    ),
+    add_jquery(),
+    clear_form(),
   )

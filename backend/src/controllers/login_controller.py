@@ -14,7 +14,7 @@ async def login(
         )
         print("login_controller.py result:", result)
         if not result:
-            raise HTTPException(status_code=404, detail="Error with user login (Controller)")
+            return False
         user_id = result.id
         role = result.role
         user_name = result.name
@@ -22,5 +22,5 @@ async def login(
         auth.set_user_cookie(response=response, user_id=user_id, role=role, user_name=user_name)
         return True
     except Exception as e:
-        print({e})
-        raise HTTPException(status_code=500, detail="Error with user login (Controller)")
+        print("login_controller.py", {e})
+        return False
