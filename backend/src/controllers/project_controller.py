@@ -16,8 +16,8 @@ async def register_project(
         )
         print("project_controller.py result:", result)
         if not result:
-            raise HTTPException(status_code=404, detail="Error registering project (Controller)")
+            return False
         return True
     except Exception as e:
-        print({e})
-        raise HTTPException(status_code=500, detail="Error registering project (Controller)")
+        print("project_controller.py" ,{e})
+        return False
