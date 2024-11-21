@@ -1,0 +1,346 @@
+.home-section{
+  position: relative; 
+  width: 100%;
+  height: auto;
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+}
+
+.join_btn {
+position: absolute;
+width: 219px;
+height: 55px;
+left: 129px;
+top: 737px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 30px;
+
+color: #000000;
+background: #F5C22F;
+
+
+}
+
+  /* 4 Weeks */
+.week {
+position: absolute;
+width: 264px;
+height: 56px;
+left: 108px;
+top: 1130px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 55px;
+line-height: 55px;
+left: 15%;                 
+  transform: translateX(-50%); 
+color: #000000;
+}
+
+
+.develop_your_idea{
+position: absolute;
+width: 408px;
+height: 36px;
+left: 436px;
+top: 1130px;
+
+font-family: "Jersey 20";
+font-style: normal;
+font-weight: 400;
+font-size: 55px;
+line-height: 55px;
+left: 50%;                 
+  transform: translateX(-50%); 
+color: #000000;
+
+}
+
+
+.launch{
+position: absolute;
+width: 340px;
+height: 56px;
+left: 958px;
+top: 1130px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 55px;
+line-height: 55px;
+left: 85%;                 
+  transform: translateX(-50%); 
+color: #000000;
+
+}
+
+
+
+
+/* Welcome Section */
+.welcome-container {
+  display: flex;  
+  align-items: center;  
+  justify-content: space-between;  
+  padding: 40px;
+}
+
+
+.creativity {
+position: absolute;
+width: 491px;
+height: 387px;
+left: 116px;
+top: 2050px;
+
+font-family: "Jost";
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 43px;
+
+color: #000000;
+}
+
+
+
+
+.schedule-container div:nth-child(3),
+.schedule-container div:nth-child(4) {
+  margin-top: 30px;  
+}
+
+@media (min-width: 768px) {
+  .schedule-container div {
+    flex: 1 1 calc(33.33% - 40px); 
+    margin: 20px;
+  }
+}
+
+
+.schedule-container div h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.schedule-container div:nth-child(1) h2 {
+
+
+position: absolute;
+width: 431px;
+height: 332px;
+left: 240px;
+top: -950px;
+background: none;
+
+/*1st week*/
+position: absolute;
+width: 396px;
+height: 341px;
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+line-height: 150px;
+color: #E11F2E;
+}
+
+.schedule-container div:nth-child(1) h3 {
+position: absolute;
+width: 288px;
+height: 131px;
+left: 231px;
+top: -800px;
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 110%;
+color: #000000;
+}
+.schedule-container div:nth-child(1) p {
+position: absolute;
+width: 288px;
+height: 131px;
+left: 231px;
+top: -700px;
+
+font-family: 'Jost';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 110%;
+color: #000000;
+}
+
+
+
+/* 2nd week */
+
+.schedule-container div:nth-child(2) h2 {
+position: absolute;
+width: 431px;
+height: 332px;
+left: 825px;
+top: -950px;
+background: none;
+position: absolute;
+width: 396px;
+height: 341px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+line-height: 150px;
+color: #F5BC18;
+}
+
+.schedule-container div:nth-child(2) h3 {
+position: absolute;
+width: 375px;
+height: 131px;
+left: 800px;
+top: -800px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 120%;
+color: #000000;
+}
+
+.schedule-container div:nth-child(2) p {
+position: absolute;
+width: 375px;
+height: 131px;
+left: 800px;
+top: -700px;
+
+font-family: 'Jost';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 120%;
+color: #000000
+}
+
+
+/* 3rd week */
+.schedule-container div:nth-child(3) h2 {
+
+position: absolute;
+width: 431px;
+height: 332px;
+left: 240px;
+top: -550px;
+background:none;
+width: 396px;
+height: 298px;
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+line-height: 150px;
+color: #2C699D;
+}
+
+
+.schedule-container div:nth-child(3) h3 {
+position: absolute;
+width: 346px;
+height: 109px;
+left: 230px;
+top: -400px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 48px;
+
+color: #000000;
+}
+
+.schedule-container div:nth-child(3) p {
+position: absolute;
+width: 346px;
+height: 109px;
+left: 222px;
+top: -330px;
+font-family: 'Jost';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 43px;
+
+color: #000000;
+
+}
+
+
+/* 4th week */
+.schedule-container div:nth-child(4) h2 {
+position: absolute;
+width: 431px;
+height: 332px;
+left: 830px;
+top: -550px;
+background: none;
+
+
+width: 396px;
+height: 341px;
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+line-height: 150px;
+color: #008753;
+}
+
+.schedule-container div:nth-child(4) h3 {
+
+position: absolute;
+width: 373px;
+height: 109px;
+left: 800px;
+top: -400px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 48px;
+
+color: #000000;
+}
+
+.schedule-container div:nth-child(4) p {
+position: absolute;
+width: 373px;
+height: 109px;
+left: 800px;
+top: -330px;
+font-family: 'Jost';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 43px;
+
+color: #000000;
+
+
+
+}

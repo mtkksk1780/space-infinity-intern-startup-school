@@ -1,0 +1,44 @@
+.back{
+position: absolute;
+width: 1278px;
+height: 896px;
+left: 11px;
+top: 147px;
+
+background: url("space-infinity/static/images/confirmation/back.png");
+}
+
+
+.thankyou{
+position: absolute;
+width: 795px;
+height: 99px;
+left: 225px;
+top: 324px;
+}
+
+
+.checkmark{
+position: absolute;
+width: 310px;
+height: 211px;
+left: 495px;
+top: 468px;
+}
+
+.complete{
+position: absolute;
+width: 835px;
+height: 94px;
+left: 248px;
+top: 742px;
+}
+
+
+.layer{
+position: absolute;
+width: 726px;
+height: 35px;
+left: 288px;
+top: 846px;
+}
