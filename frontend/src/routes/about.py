@@ -8,7 +8,7 @@ def create_about_page():
     return Html(
         Head(
             Title("About Us"),
-            Link(rel="stylesheet", href="../../static/style.css"),
+            Link(rel="stylesheet", href="../../static/styles/style.css"),
         ),
         Body(
             header_html(),
