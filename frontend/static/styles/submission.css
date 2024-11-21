@@ -1,0 +1,223 @@
+/*submission page*/
+.submission-section{
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.back{
+  pwidth: 100%;
+  height: auto;
+ }
+ 
+ 
+ .submission{
+ 
+ position: absolute;
+ width: 837px;
+ height: 93px;
+ left: 218px;
+ top: 233px;
+ }
+ 
+ 
+ .weeks{
+ /* Week 1 */
+ 
+ position: absolute;
+ width: 155px;
+ height: 64px;
+ left: 513px;
+ top: 377px;
+ 
+ font-family: 'Jersey 20';
+ font-style: normal;
+ font-weight: 400;
+ font-size: 64px;
+ line-height: 64px;
+ /* identical to box height */
+ text-align: center;
+ color: #FFFFFF;
+ }
+ 
+ .submit p{
+ /* Deadline: October 21st 11:59PM */
+ position: absolute;
+ width: 504px;
+ height: 57px;
+ left: 373px;
+ top: 456px;
+ 
+ font-family: 'Jersey 20';
+ font-style: normal;
+ font-weight: 400;
+ font-size: 40px;
+ line-height: 40px;
+ 
+ color: #FFFFFF;
+ }
+ 
+ .project_input{
+ position: absolute;
+ width: 456px;
+ height: 63px;
+ left: 413px;
+ top: 523px;
+ background: #FFFFFF;
+ 
+ /* [Project Name] */
+ font-family: 'Jersey 20';
+ font-style: normal;
+ font-weight: 400;
+ font-size: 40px;
+ line-height: 40px;
+ color: #000000;
+ }
+ 
+ .liner_input{
+ position: absolute;
+ width: 456px;
+ height: 54px;
+ left: 409px;
+ top: 623px;
+ 
+ background: #FFFBFB;
+ 
+ /* [One liner] */
+ 
+ font-family: 'Jersey 20';
+ font-style: normal;
+ font-weight: 400;
+ font-size: 40px;
+ line-height: 40px;
+ 
+ color: #000000;
+ }
+ 
+ .progress{
+   /* On a scale of 1 - 10, how’s your progress? */
+ 
+ position: absolute;
+ width: 498px;
+ height: 42px;
+ left: 398px;
+ top: 700px;
+ 
+ font-family: 'Jersey 20';
+ font-style: normal;
+ font-weight: 400;
+ font-size: 30px;
+ line-height: 30px;
+ 
+ color: #FFFBFB;
+ 
+ 
+ }
+ .progress_input{
+   /* Rectangle */
+ 
+ position: absolute;
+ width: 454px;
+ height: 126px;
+ left: 406px;
+ top: 849px;
+ 
+ background: #FFFBFB;
+ /* [Progress] */
+ 
+ 
+ font-family: 'Jersey 20';
+ font-style: normal;
+ font-weight: 400;
+ font-size: 40px;
+ line-height: 40px;
+ 
+ color: #000000;
+ }
+ .upload_input{
+   /* Rectangle */
+ position: absolute;
+ width: 454px;
+ height: 76px;
+ left: 402px;
+ top: 1002px;
+ 
+ background: #FFF7F7;
+ /* [Upload files] */
+ 
+ font-family: 'Jersey 20';
+ font-style: normal;
+ font-weight: 400;
+ font-size: 40px;
+ line-height: 40px;
+ 
+ color: #000000;
+ }
+ 
+ .submit{
+   /* SUBMIT */
+ position: absolute;
+ width: 120px;
+ height: 42px;
+ left: 564px;
+ top: 1117px;
+ 
+ font-family: 'Jersey 20';
+ font-style: normal;
+ font-weight: 400;
+ font-size: 40px;
+ line-height: 40px;
+ 
+ color: #FFFFFF;
+ /* Rectangle 51 */
+ 
+ box-sizing: border-box;
+ 
+ position: absolute;
+ width: 154px;
+ height: 55px;
+ left: 542px;
+ top: 1110px;
+ 
+ background: #E11F2E;
+ border: 1px solid #000000;
+ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ 
+ }
+ .stuck{
+   /* Feeling stuck? */
+ position: absolute;
+ width: 218px;
+ height: 40px;
+ left: 414px;
+ top: 1198px;
+ 
+ font-family: 'Jersey 20';
+ font-style: normal;
+ font-weight: 400;
+ font-size: 40px;
+ line-height: 40px;
+ color: #FFFFFF;
+ }
+
+
+ .category{
+position: absolute;
+width: 289px;
+height: 40px;
+left: 666px;
+top: 1198px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 35px;
+line-height: 35px;
+
+color: #FFFFFF;
+ }
+
+
+
+
+
+ 

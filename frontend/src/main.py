@@ -1,33 +1,42 @@
 from fasthtml.common import *
 from routes.home import create_home_page
-from routes.about import create_about_page
 from routes.submission import create_submission_page
+from routes.confirmation import create_confirmation_page
+from routes.history import create_history_page
+from routes.feedback import create_feedback_page
 from routes.login import create_login_page
+from routes.signup import create_signup_page
 
 app, rt = fast_app()
 
-# Home Page
-@rt("/")
+@app.route("/")
 def index():
-    return create_home_page()
+    return create_home_page() 
 
-# About Page
-@rt("/about")
-def about():
-    return create_about_page()
-
-# Submission Page
-@rt("/submission")
+@app.route("/submission")
 def submission():
-    return create_submission_page() 
+    return create_submission_page()  
 
-# Login Page
-@rt("/login")
+@app.route("/confirmation")
+def confirmation():
+    return create_confirmation_page()
+
+@app.route("/history")
+def history():
+    return create_history_page()
+
+@app.route("/feedback")
+def feedback():
+    return create_feedback_page()
+
+@app.route("/login")
 def login():
-    return login_page()
+    return create_login_page()
+
+@app.route("/signup")
+def signup():
+    return create_signup_page()
 
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="127.0.0.1", port=5001, reload=True)
-
-serve()
