@@ -1,0 +1,219 @@
+.history-section {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.feedback{
+  width: 100%;
+  height: auto;
+}
+
+.new_submissions{
+position: absolute;
+left: 350px;
+top: 769px;
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 60px;
+line-height: 60px;
+color: #F5BC18;
+
+}
+
+
+
+.input-name{
+  position: absolute;
+  width: 675px;
+  height: 303px;
+  left: 375px;
+  top: 750px;
+  font-family: 'Jersey 20';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 60px;
+  text-decoration-line: underline;
+  background-color: transparent; 
+  border: none;
+
+  color: #FFFFFF;
+}
+
+
+.input-name::placeholder,
+.input-project::placeholder {
+  color: #ddd; 
+}
+
+
+.input-project {
+  position: absolute;
+  width: 675px;
+  height: 303px;
+  left: 650px;
+  top: 750px;
+  font-family: 'Jersey 20';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 60px;
+  text-decoration-line: underline;
+  border: none; 
+  border-radius: 5px; /* 角を丸 */
+  background-color: transparent; 
+  color: #fff; 
+  outline: none; 
+  color: #FFFFFF;
+}
+
+
+.line{
+
+box-sizing: border-box;
+
+position: absolute;
+width: 1303px;
+height: 12px;
+left: -6px;
+top: 1000px;
+
+background: #000000;
+border: 6px solid #FFFFFF;
+
+}
+
+.input-description {
+  font-size: 20px;
+  color: #fff; 
+  font-weight: bold;
+  margin-top: 10px; /* テキスト上に余白追加 */
+}
+
+.input-checkbox{
+
+position: absolute;
+width: 797px;
+height: 74px;
+left: 450px;
+top: 1389px;
+border-radius: black;
+}
+
+.checkbox-label{
+
+position: absolute;
+width: 797px;
+height: 74px;
+left: 280px;
+top: 1389px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 40px;
+
+color: #FFFFFF;
+
+}
+
+.rate-label {
+position: absolute;
+width: 797px;
+height: 74px;
+left: 277px;
+top: 1500px;
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 40px;
+color: #FFFFFF;
+}
+
+.rating-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 460px;
+  top: 1570px;
+}
+
+.rate1-label,
+.rate2-label,
+.rate3-label,
+.rate4-label,
+.rate5-label {
+  width: 70px;
+  height: 70px;
+  background: #FFFFFF;
+  border: 1px solid #d88826;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 70px;
+  font-family: 'Jersey 20';
+  font-size: 40px;
+  color: #000000;
+}
+
+/* ラジオボタン非表示*/
+input[type="radio"] {
+  display: none;
+}
+
+/* 選択されたとき */
+input[type="radio"]:checked + label {
+  background-color: #d88826;
+  color: #fff;
+}
+
+
+.coment{
+
+position: absolute;
+width: 896px;
+height: 74px;
+left: 223px;
+top: 1700px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 40px;
+color: #FFFFFF;
+
+}
+
+.coment-field{
+position: absolute;
+box-sizing: border-box;
+position: a;
+width: 485px;
+height: 198px;
+left: 430px;
+top: 1842px;
+
+background: #FFFFFF;
+border: none;
+
+}
+
+.submit_btn{
+  position: absolute;
+  width: 296px;
+  height: 62px;
+  left: 523px;
+  top: 2100px;
+  font-family: 'Jersey 20';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 40px;
+  color: #000000;
+  background: #F5BC18;
+  }

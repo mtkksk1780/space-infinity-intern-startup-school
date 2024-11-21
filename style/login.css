@@ -1,0 +1,102 @@
+.login_section{
+  position: relative; 
+  width: 100%;
+  height: auto;
+}
+
+.login-img{
+  width: 100%;
+  height: auto;
+}
+
+.email{
+position: absolute;
+width: 201px;
+height: 46px;
+left: 590px;
+top: 780px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height: 25px;
+border: none;
+background-color: transparent;
+outline: none;
+
+color: #BFA6A6;
+}
+
+.password{
+  /* Password */
+
+position: absolute;
+width: 107px;
+height: 26px;
+left: 590px;
+top: 935px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height: 25px;
+border: none;
+background-color: transparent;
+outline: none;
+color: #BFA6A6;
+}
+
+
+
+
+.forgot_password{
+position: absolute;
+font-family: 'Jersey 20';
+font-size: 20px;
+left: 760px;
+top: 1000px;
+color: white;
+border: none;
+background-color: transparent;
+}
+
+
+.sign_up{
+
+position: absolute;
+width: 89px;
+height: 49px;
+left: 680px;
+top: 1049px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height: 25px;
+text-decoration-line: underline;
+border: none;
+background-color: transparent;
+text-decoration-line: underline;
+color: #FFFFFF;
+
+
+}
+
+
+
+.enter{
+
+position: absolute;
+font-family: 'Jersey 20';
+font-size: 30px;
+width: 169px;
+height: 49px;
+left: 645px;
+top: 1112px;
+border: none;
+background: #F5BC18;
+
+}

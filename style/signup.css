@@ -1,0 +1,73 @@
+.signup_section{
+  position: relative; 
+  width: 100%;
+  height: auto;
+}
+
+.signup {
+  width: 100%;
+  height: auto;
+}
+
+.input_section{
+font-weight: 400;
+line-height: 40px;
+color: #B3A9A9;
+}
+
+.first_name{
+position: absolute;
+border: none;
+font-size: 55px;
+width: 299px;
+height: 57px;
+left: 482px;
+top: 900px;
+font-family: 'Jersey 20';
+font-style: normal;
+background: transparent;
+outline: none;
+
+}
+
+.email{
+position: absolute;
+border: none;
+font-size: 55px;
+width: 299px;
+height: 57px;
+left: 482px;
+top: 1040px;
+font-family: 'Jersey 20';
+font-style: normal;
+background: transparent;
+outline: none;
+}
+
+.password{
+  position: absolute;
+  border: none;
+  font-size: 55px;
+  width: 299px;
+  height: 57px;
+  left: 482px;
+  top: 1170px;
+  font-family: 'Jersey 20';
+  font-style: normal;
+  background: transparent;
+  outline: none;
+}
+
+.confirm_password{
+  position: absolute;
+  border: none;
+  font-size: 55px;
+  width: 299px;
+  height: 57px;
+  left: 482px;
+  top: 1310px;
+  font-family: 'Jersey 20';
+  font-style: normal;
+  background: transparent;
+  outline: none;
+}
