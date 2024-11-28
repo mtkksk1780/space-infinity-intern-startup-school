@@ -53,6 +53,7 @@ model Feedback {
     userId            String
     evaluationRate    Int
     evaluationComment String
+    isAnonymous       Boolean
     User              User       @relation(fields: [userId], references: [id])
     Submission        Submission @relation(fields: [submissionId], references: [id])
 }

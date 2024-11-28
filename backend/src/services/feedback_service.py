@@ -6,7 +6,7 @@ async def register_feedback(
     evaluation_comment: str,
     submission_id: str,
     user_id: str,
-    # is_anonymous: bool,
+    is_anonymous: bool,
 ):
     try:
         result = await prisma.feedback.create(data={
@@ -14,7 +14,7 @@ async def register_feedback(
             "evaluationComment": evaluation_comment,
             "submissionId": submission_id,
             "userId": user_id,
-            # "isAnonymous": is_anonymous
+            "isAnonymous": is_anonymous
         })
         return result
     except Exception as e:

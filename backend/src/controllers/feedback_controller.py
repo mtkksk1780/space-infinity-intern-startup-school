@@ -7,7 +7,7 @@ async def register_feedback(
     evaluation_comment: str,
     submission_id: str,
     user_id: str,
-    # is_anonymous: bool,
+    is_anonymous: bool,
 ):
     try:
         result = await service.register_feedback(
@@ -15,7 +15,7 @@ async def register_feedback(
             evaluation_comment = evaluation_comment,
             submission_id = submission_id,
             user_id = user_id,
-            # is_anonymous = is_anonymous
+            is_anonymous = is_anonymous
         )
         print("feedback_controller.py result:", result)
         if not result:

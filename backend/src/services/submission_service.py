@@ -10,7 +10,7 @@ async def register_progress(
     try:
         result = await prisma.submission.create(data={
             "projectId": "aaa", # tentative
-            "week": 1, # tentative
+            "week": 4, # tentative
             "progressRate": progress_score,
             "progressComment": progress_comment,
             "outputUrl": upload_link
