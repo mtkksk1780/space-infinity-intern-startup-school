@@ -5,6 +5,7 @@ build/
 dist/
 wheels/
 *.egg-info
+path/
 
 # venv
 .venv

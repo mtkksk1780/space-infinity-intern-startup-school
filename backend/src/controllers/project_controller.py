@@ -1,5 +1,6 @@
 from fastapi import HTTPException
 from src.services import project_service as service
+from src.helpers.date_utils import get_toronto_date
 
 async def register_project(
     project_name: str,
