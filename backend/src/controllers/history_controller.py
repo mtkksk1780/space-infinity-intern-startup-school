@@ -28,6 +28,7 @@ async def get_history(project_id: str):
                         "user_name": feedback.User.name if feedback.User else None,
                         "evaluation_rate": feedback.evaluationRate,
                         "evaluation_comment": feedback.evaluationComment,
+                        "is_anonymous": feedback.isAnonymous,
                     }
                     for feedback in submission.Feedback
                 ]
@@ -38,7 +39,7 @@ async def get_history(project_id: str):
             "project_info": project_info,
             "submission_history": submission_history
         }
-        
+        print("history_controller.py data:", data)
         return data
     except Exception as e:
         print("history_controller.py" ,{e})
