@@ -31,4 +31,4 @@ def get_user_cookie(session_id: str = Cookie(None)):
         print("auth_middleware.py get_user_cookie:", user_data)
         return user_data
     else:
-        return {"error": "Session not found"}
+        return {"message": "Session ID is not found in cookies."}

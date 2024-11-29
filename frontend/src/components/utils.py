@@ -3,12 +3,15 @@ from fasthtml.common import *
 # This file is for storing utility functions that can be reused in multiple components
 
 # Get form attributes
-def get_form_attributes(path: str):
-    return {
+def get_form_attributes(path: str, target: str = None):
+    attributes = {
         "action": "http://127.0.0.1:8000" + path,
         "method": "post",
-        "target": "response_iframe"
     }
+    # Add target attribute if it exists
+    if target:
+        attributes["target"] = target
+    return attributes
 
 # Add iframe
 def add_iframe():

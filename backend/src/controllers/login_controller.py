@@ -19,7 +19,7 @@ async def login(
         role = result.role
         user_name = result.name
         # Set user data in cookies
-        auth.set_user_cookie(response=response, user_id=user_id, role=role, user_name=user_name)
+        auth.set_user_cookie(response = response, user_id = user_id, role = role, user_name = user_name)
         return True
     except Exception as e:
         print("login_controller.py", {e})
