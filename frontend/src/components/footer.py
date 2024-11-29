@@ -17,7 +17,7 @@ def footer_html():
                         Form(
                             Input(placeholder="Type your email", name="email", _class="footer_input input-form"),
                             Button("Subscribe", type="submit", _class="footer_btn submit-btn"),
-                            **get_form_attributes("/footer"),
+                            **get_form_attributes("/footer", "response_iframe"),
                         ),
                         _class="footer_subscribe"
                     ),
