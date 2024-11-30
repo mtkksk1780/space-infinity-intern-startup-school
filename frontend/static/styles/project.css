@@ -1,0 +1,127 @@
+　.project_section {
+  position: relative; 
+  width: 100%;
+  height: auto;
+  margin: 0 auto; /* 必要に応じて中央配置 */
+}
+
+.project_img {
+  width: 100%;
+  height: auto;
+}
+
+.project_titel {
+  position: absolute;
+  width: 595px;
+  height: 201px;
+  top: 316px;
+  left:600px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 61px;
+
+  color: #FFFFFF;
+}
+
+
+.project_name{
+  /* Rectangle 50 */
+
+box-sizing: border-box;
+
+position: absolute;
+justify-content: center;  /* 横方向の中央揃え */
+
+width: 717px;
+height: 95px;
+left:450px;
+top: 509px;
+font-family: 'Jersey 20';
+font-style: normal;
+font-size: 40px;
+background: #FFFFFF;
+border: 1px solid #000000;
+
+}
+
+.one_liner{
+  /* Rectangle 60 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 717px;
+height: 95px;
+left:450px;
+top: 691px;
+font-family: 'Jersey 20';
+font-style: normal;
+font-size: 40px;
+background: #FFFFFF;
+border: 1px solid #000000;
+
+}
+
+.check{
+  /* One liner is a short summary of your goal. Check Category Page for the examples. */
+
+position: absolute;
+width: 689px;
+height: 69px;
+left:450px;
+top: 821px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 45px;
+line-height: 45px;
+
+color: #FFFFFF;
+
+
+}
+.link{
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 45px;
+line-height: 45px;
+
+color: #FFFFFF;
+}
+
+.project_detail{
+  /* Rectangle 61 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 717px;
+height: 279px;
+left:450px;
+top: 1010px;
+font-family: 'Jersey 20';
+font-style: normal;
+font-size: 40px;
+background: #FFFFFF;
+border: 1px solid #000000;
+
+}
+
+.submit{
+  /* Rectangle 57 */
+
+position: absolute;
+width: 213px;
+height: 74px;
+left: 700px;
+top: 1366px;
+font-family: 'Jersey 20';
+font-style: normal;
+font-size: 40px;
+background: #F5BC18;
+
+}

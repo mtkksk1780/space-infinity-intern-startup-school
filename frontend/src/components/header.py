@@ -5,31 +5,30 @@ def header_html():
         Head(
             Title("Home Page"),
             Link(rel="stylesheet", href="/static/styles/style.css"),
-            Link(rel="stylesheet", href="/static/styles/header.css"),
+            Link(rel="stylesheet", href="static/styles/header.css"),
         ),
         Div(
-            A(
+             A(
                 Img(src="/static/images/header/space_infinity_log.png", alt="Space Infinity Logo", _class="logo"),
                 href="/"
-            ),
+                ),
             Nav(
                 Ul(
                     Li(A("Home", href="/")),
-                    Li(A("About", href="#")),
-                    Li(A("Explorer", href="#")),
-                    Li(A("Contact", href="#")),
                     Li(A("Submission", href="/submission")),
                     Li(A("Login", href="/login")),
                     Li(A("Sign Up", href="/signup")),
-                    Button("☰", _class="hamburger", onclick="toggleMenu()"),
+                    Li(A("Project",href="/project")),
+                    Button("Explorer", _class="hamburger", onclick="toggleMenu()"),
                     _class="main-nav"
                 )
             ),
             Div(
                 Ul(
+                    Li(A("About", href="#")),
                     Li(A("History", href="/history")),
                     Li(A("Feedback", href="/feedback")),
-                    Li(A("Contact", href="#")),
+                    Li(A("Contact", href="/contact")),
                     _class="hamburger-menu"
                 ),
                 _class="hamburger-menu-container"
