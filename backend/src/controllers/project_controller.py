@@ -1,6 +1,7 @@
 from fastapi import HTTPException
-from src.services import project_service as service
+from src.services import project_service, submission_service
 from src.helpers.date_utils import get_toronto_date
+import uuid
 
 async def register_project(
     project_name: str,
@@ -9,15 +10,29 @@ async def register_project(
     user_id: str
 ):
     try:
-        result = await service.register_project(
-            project_name=project_name,
-            one_liner=one_liner,
-            description=description,
-            user_id=user_id
+        # Generate project_id using uuid
+        project_id = str(uuid.uuid4())
+
+        # Register project information to the Project table
+        result_project = await project_service.register_project(
+            project_id = project_id,
+            project_name = project_name,
+            one_liner = one_liner,
+            description = description,
+            user_id = user_id
         )
-        print("project_controller.py result:", result)
-        if not result:
+        print("project_controller.py result_project:", result_project)
+        if not result_project:
             return False
+
+        # Register submission template records to the Submission table
+        result_submission = await submission_service.create_submission_template(
+            project_id = project_id
+        )
+        print("project_controller.py result_submission:", result_submission)
+        if not result_submission:
+            return False
+
         return True
     except Exception as e:
         print("project_controller.py" ,{e})
