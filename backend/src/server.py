@@ -9,6 +9,7 @@ from src.routers import history_router as history
 from src.routers import login_router as login
 from src.routers import register_router as register
 from src.routers import footer_router as footer
+from src.routers import seed_router as seed
 from src.middlewares import auth_middleware as auth
 from src import prisma
 
@@ -37,6 +38,7 @@ app.include_router(history.router)
 app.include_router(login.router)
 app.include_router(register.router)
 app.include_router(footer.router)
+app.include_router(seed.router)
 app.include_router(auth.router)
 
 @app.on_event("startup")

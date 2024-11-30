@@ -37,14 +37,16 @@ model Project {
 }
 
 model Submission {
-    id              String     @id @default(uuid())
-    projectId       String
-    week            Int
-    progressRate    Int
-    progressComment String
-    outputUrl       String?
-    Project         Project    @relation(fields: [projectId], references: [id])
-    Feedback        Feedback[]
+    id               String     @id @default(uuid())
+    projectId        String
+    week             Int
+    progressRate     Int?
+    progressComment  String?
+    outputUrl        String?
+    isActiveWeek     Boolean
+    submissionStatus String
+    Project          Project    @relation(fields: [projectId], references: [id])
+    Feedback         Feedback[]
 }
 
 model Feedback {

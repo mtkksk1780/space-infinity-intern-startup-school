@@ -14,6 +14,7 @@ async def get_project(
 
 
 async def register_project(
+    project_id: str,
     project_name: str,
     one_liner: str,
     description: str,
@@ -21,6 +22,7 @@ async def register_project(
 ):
     try:
         result = await prisma.project.create(data={
+            "id": project_id,
             "name": project_name,
             "oneLiner": one_liner,
             "description": description,

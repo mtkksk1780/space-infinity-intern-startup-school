@@ -3,8 +3,8 @@ from src.controllers import feedback_controller as controller
 
 router = APIRouter()
 
-@router.post("/feedback")
-async def get_active_submissions():
+# @router.post("/feedback")
+# async def get_active_submissions():
 
 
 @router.post("/feedback/{submission_id}/submit")
