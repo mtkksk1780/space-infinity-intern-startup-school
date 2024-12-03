@@ -1,0 +1,103 @@
+.contact-seciton {
+  position: relative; 
+  width: 100%;
+  height: auto;
+}
+
+.contact {
+  width: 100%;
+  height: auto;
+}
+.input-name{
+
+position: absolute;
+width: 374px;
+height: 51px;
+left: 600px;
+top: 940px;
+
+background: #FFFFFF;
+border: none;
+/* Your Name */
+
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 30px;
+
+color: #D9D9D9;
+
+
+}
+
+
+.input-email{
+
+position: absolute;
+width: 374px;
+height: 57px;
+left: 600px;
+top: 1007px;
+
+background: #FFF8F8;
+border: none;
+
+
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 30px;
+
+color: #D9D9D9;
+
+}
+
+.quesiotns{
+
+position: absolute;
+width: 374px;
+height: 102px;
+left: 600px;
+top: 1089px;
+
+background: #FFFFFF;
+border: none;
+
+
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 30px;
+
+color: #D9D9D9;
+
+}
+
+
+.send{
+
+
+position: absolute;
+width: 109px;
+height: 38px;
+left: 740px;
+top: 1252px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 30px;
+text-align: center;
+
+color: #000000;
+background-color: #F5BC18;
+
+
+}
