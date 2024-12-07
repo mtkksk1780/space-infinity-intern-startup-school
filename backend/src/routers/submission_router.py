@@ -4,14 +4,14 @@ from src.controllers import submission_controller as controller
 router = APIRouter()
 
 # Update submission records when submitting progress
-@router.post("/submission/completed/{project_id}")
-async def register_progress_completed(
+@router.post("/submission/complete/{project_id}")
+async def register_progress_complete(
     project_id: str,
     progress_score: int = Form(...),
     progress_comment: str = Form(...),
     upload_link: str = Form(...)
 ):
-    submission_status = "Completed"
+    submission_status = "Reviewing"
     is_registered =  await controller.register_progress(
         project_id = project_id,
         progress_score = progress_score,

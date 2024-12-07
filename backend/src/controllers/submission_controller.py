@@ -19,11 +19,11 @@ async def register_progress(
         )
         print("submission_controller.py result_progress:", result_progress)
 
-        # Update the next week's submission record as active
-        result_activation = await service.update_active_week(
+        # Update the previous and next week's record
+        result_update_records = await service.update_status(
             project_id = project_id,
         )
-        print("submission_controller.py result_activation:", result_activation)
+        print("submission_controller.py result_update_records:", result_update_records)
        
         return True
     except Exception as e:

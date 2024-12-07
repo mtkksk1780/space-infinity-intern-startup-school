@@ -26,7 +26,7 @@ async def register_seed():
                 "progressComment": "I have made the beat",
                 "outputUrl": "https://www.youtube.com/watch?v=9bZkp7q19f0",
                 "isActiveWeek": True,
-                "submissionStatus": "Pending",
+                "submissionStatus": "Working",
             },
             {"id": "aaa2", 
                 "projectId": "aaa", 
