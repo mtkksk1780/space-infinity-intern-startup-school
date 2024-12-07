@@ -8,10 +8,10 @@ async def create_submission_template(
     try:
         print("project_id:", project_id)
         templates = [
-            {"projectId": project_id, "week": 1, "progressRate": None, "progressComment": None, "outputUrl": None, "isActiveWeek": True, "submissionStatus": "Pending"},
-            {"projectId": project_id, "week": 2, "progressRate": None, "progressComment": None, "outputUrl": None, "isActiveWeek": False, "submissionStatus": "Pending"},
-            {"projectId": project_id, "week": 3, "progressRate": None, "progressComment": None, "outputUrl": None, "isActiveWeek": False, "submissionStatus": "Pending"},
-            {"projectId": project_id, "week": 4, "progressRate": None, "progressComment": None, "outputUrl": None, "isActiveWeek": False, "submissionStatus": "Pending"},
+            {"projectId": project_id, "week": 1, "progressRate": None, "progressComment": None, "outputUrl": None, "isActiveWeek": True, "submissionStatus": "Working"},
+            {"projectId": project_id, "week": 2, "progressRate": None, "progressComment": None, "outputUrl": None, "isActiveWeek": False,"submissionStatus": "Pending"},
+            {"projectId": project_id, "week": 3, "progressRate": None, "progressComment": None, "outputUrl": None, "isActiveWeek": False,"submissionStatus": "Pending"},
+            {"projectId": project_id, "week": 4, "progressRate": None, "progressComment": None, "outputUrl": None, "isActiveWeek": False,"submissionStatus": "Pending"},
         ]
         # Insert data into the database
         result = await prisma.submission.create_many(data=templates, skip_duplicates=True)
@@ -52,12 +52,12 @@ async def register_progress(
         raise HTTPException(status_code=500, detail="Error registering progress (Service)")
 
 
-# Update the next week's submission template as active
-async def update_active_week(
+# Update the previous and next week's record
+async def update_status(
     project_id: str
 ):
     try:
-        # Step1: Get the next week's submission record
+        # Step1: Get the next and current week's submission record
         next_week_submission = await prisma.submission.find_first(
             where={
                 "projectId": project_id,
@@ -68,19 +68,92 @@ async def update_active_week(
             },
         )
 
-        if not next_week_submission:
-            return None
+        print("submission_service.py next_week_submission:", next_week_submission)
 
-        # Step2: Update the next week's submission record as active
-        result = await prisma.submission.update(
-            where={"id": next_week_submission.id},
+        if next_week_submission:
+            current_week = next_week_submission.week - 1
+        else:
+            current_week = 4
+
+        print("submission_service.py current_week:", current_week)
+
+        # Step2: Update the previous week's submission status as "Completed"
+        result_submission_status = await prisma.submission.update_many(
+            where={
+                "projectId": project_id,
+                "week": current_week - 1,
+                "submissionStatus": {"not": "Incomplete"},
+            },
             data={
-                "isActiveWeek": True,
+                "submissionStatus": "Completed",
             }
         )
 
-        return result
+        print("submission_service.py result_submission_status:", result_submission_status)
+
+        # Step3: Update the next week's active week status as "True"
+        result_active_week = await prisma.submission.update_many(
+            where={
+                "projectId": project_id,
+                "week": current_week + 1,
+            },
+            data={
+                "isActiveWeek": True,
+                "submissionStatus": "Working",
+            }
+        )
+
+        print("submission_service.py result_active_week:", result_active_week)
+
+        data = {
+            "result_active_week": result_active_week,
+            "result_submission_status": result_submission_status,
+        }
+
+        return data
 
     except Exception as e:
         print({e})
-        raise HTTPException(status_code=500, detail="Error updating next week (Service)")
+        raise HTTPException(status_code=500, detail="Error updating the previous and next week's records (Service)")
+
+
+# Get all active submissions
+async def get_active_submissions():
+    try:
+        result = await prisma.submission.find_many(
+            where={
+                "submissionStatus": "Reviewing",
+            },
+            include={
+                "Project": {
+                    "include": {
+                        "User": True,
+                    },
+                },
+            },
+        )
+        return result
+    except Exception as e:
+        print({e})
+        raise HTTPException(status_code = 500, detail="Error fetching active submissions (Service)")
+
+
+# Get selected submission
+async def get_selected_submission(submission_id: str):
+    try:
+        result = await prisma.submission.find_unique(
+            where={
+                "id": submission_id,
+            },
+            include={
+                "Project": {
+                    "include": {
+                        "User": True,
+                    },
+                },
+            },
+        )
+        return result
+    except Exception as e:
+        print({e})
+        raise HTTPException(status_code = 500, detail="Error fetching selected submission (Service)")

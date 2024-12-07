@@ -3,10 +3,21 @@ from src.controllers import feedback_controller as controller
 
 router = APIRouter()
 
-# @router.post("/feedback")
-# async def get_active_submissions():
+# Get all active submissions
+@router.post("/feedback")
+async def get_active_submissions():
+    result = await controller.get_active_submissions()
+    return result
 
 
+# Get selected submission
+@router.post("/feedback/{submission_id}")
+async def get_selected_submission(submission_id: str):
+    result = await controller.get_selected_submission(submission_id)
+    return result
+
+
+# Register feedback
 @router.post("/feedback/{submission_id}/submit")
 async def register_feedback(
     submission_id: str,
