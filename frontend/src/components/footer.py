@@ -13,16 +13,13 @@ def footer_html():
                 Img(src="/static/images/footer/footer.png", alt="Footer Image", _class="footer_img"),
                 Div(
                     # Email subscription 
-                    Div(
-                        Form(
-                            Input(placeholder="Type your email", name="email", _class="footer_input input-form"),
-                            Button("Subscribe", type="submit", _class="footer_btn submit-btn"),
-                            **get_form_attributes("/footer", "response_iframe"),
-                        ),
-                        _class="footer_subscribe"
-                    ),
-                    # Response Iframe
-                    add_iframe(),
+                    # Div(
+                    #     Form(
+                    #         Input(placeholder="Type your email", name="email", _class="footer_input input-form"),
+                    #         Button("Subscribe", type="submit", _class="footer_btn submit-btn"),
+                    #     ),
+                    #     _class="footer_subscribe"
+                    # ),
                     Div(
                         # Links 
                         Div(

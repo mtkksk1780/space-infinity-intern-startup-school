@@ -1,16 +1,17 @@
-　.project_section {
+.project_section {
   position: relative; 
   width: 100%;
   height: auto;
   margin: 0 auto; /* 必要に応じて中央配置 */
 }
 
+
 .project_img {
   width: 100%;
   height: auto;
 }
 
-.project_titel {
+.project_title {
   position: absolute;
   width: 595px;
   height: 201px;

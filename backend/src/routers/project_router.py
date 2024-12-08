@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Form
+from fastapi.responses import JSONResponse
 from src.controllers import project_controller as controller
 
 router = APIRouter()
@@ -16,4 +17,10 @@ async def register_project(
         user_id="a" # tentative (Need to get user_id from cookie)
     )
     print("project_router.py result:", is_registered)
-    return is_registered
+
+    if is_registered:
+        message = "Project registered successfully!"
+    else:
+        message = "Project registration failed!"
+
+    return JSONResponse(content={"result": is_registered, "message": message})
