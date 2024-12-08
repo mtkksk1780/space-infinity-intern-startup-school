@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Form, Response
-from fastapi.responses import RedirectResponse, HTMLResponse
+from fastapi.responses import JSONResponse
 from src.controllers import login_controller as controller
 
 router = APIRouter()
@@ -17,7 +17,10 @@ async def login(
         password = password,
     )
     print("login_router.py result:", is_loggedIn)
+    
     if is_loggedIn:
-        return Response(status_code=200)
+        message = "Login successful!"
     else:
-        raise HTTPException(status_code=400, detail="Email does not exist!")
+        message = "Login failed!"
+
+    return JSONResponse(content={"result": is_loggedIn, "message": message})

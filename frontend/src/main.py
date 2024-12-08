@@ -22,7 +22,6 @@ from routes.contact import create_contact_page
 
 from routes.project import create_project_page
 
-
 app, rt = fast_app()
 
 @app.route("/")
@@ -61,6 +60,7 @@ def contact():
 @app.route("/project")
 def project():
     return create_project_page()
+
 
 if __name__ == "__main__":
     import uvicorn
