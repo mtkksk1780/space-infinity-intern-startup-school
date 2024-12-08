@@ -1,8 +1,49 @@
 from fasthtml.common import *
 from components.header import header_html
 from components.footer import footer_html
+from components.utils import *
 
-def create_history_page():
+def create_history_page(project_id: str):
+    endpoint = get_endpoint_path() + "/history/" + project_id
+
+    # Get history data from backend
+    history_data = get_data(endpoint)
+
+    # Extract project information
+    project_info = history_data["project_info"]
+    project_name = project_info["name"]
+    one_liner = project_info["one_liner"]
+    project_detail = project_info["description"]
+
+    # Extract submission history
+    submission_history = history_data["submission_history"]
+
+    # Store submission and feedback data in dictionary
+    weeks_data = {}
+    submission = {}
+    feedback = {}
+
+    for i in range(min(len(submission_history), 4)):
+        week = submission_history[i]
+        week_key = f"week{i+1}"
+        submission[week_key] = {
+            "notes": week["progress_comment"],
+            "url": week["output_url"],
+            "feedback": week["feedback"]
+        }
+        print("submission for Week:", week_key, submission[week_key])
+
+        feedback_list = week["feedback"]
+        feedback[week_key] = []
+        for f in feedback_list:
+            feedback[week_key].append({
+                "user_name": f["user_name"],
+                "evaluation_rate": f["evaluation_rate"],
+                "evaluation_comment": f["evaluation_comment"],
+                "is_anonymous": f["is_anonymous"]
+            })
+            print("Organized Feedback for Week:", week_key, feedback[week_key])
+
     return Html(
         Head(
             Title("History"),
@@ -20,17 +61,17 @@ def create_history_page():
                     ),
                     Div(
                         Label("Project name -", _class="project"),
-                        Input(placeholder="Enter project name", _class="project-field"),
+                        Input(placeholder="Enter project name", _class="project-field", readonly=True, value=project_name),
                         _class="input-row"
                     ),
                     Div(
                         Label("One liner -", _class="liner"),
-                        Input(placeholder="Enter one liner", _class="liner-field"),
+                        Input(placeholder="Enter one liner", _class="liner-field", readonly=True, value=one_liner),
                         _class="input-row"
                     ),
                     Div(
                         Label("Project detail -", _class="detail"),
-                        Input(placeholder="Enter project detail", _class="detail-field"),
+                        Input(placeholder="Enter project detail", _class="detail-field", readonly=True, value=project_detail),
                         _class="input-row"
                     ),
                     _class="input-container"
@@ -43,11 +84,12 @@ def create_history_page():
                 ),
                 Div(
                     Label("Notes -", _class="notes"),
-                    Input(placeholder="Enter notes", _class="note-field"),
+                    Input(placeholder="Enter notes", _class="note-field", readonly=True, value=submission["week1"]["notes"]),
                     _class="input-row"
                 ),
-                Div(    
-                    Input(placeholder="[URL]", _class="url-field"),
+                Div(
+                    Label("Output URL -", _class="url"),
+                    Input(placeholder="[URL]", _class="url-field", readonly=True, value=submission["week1"]["url"]),
                     _class="input-row"
                 ),
                 Div(
@@ -60,6 +102,16 @@ def create_history_page():
                     Img(src="/static/images/history/box.png", alt="box",_class="box3"),
                 ),
                 Div(
+                    Label("Notes -", _class="notes"),
+                    Input(placeholder="Enter notes", _class="note-field", readonly=True, value=submission["week2"]["notes"]),
+                    _class="input-row"
+                ),
+                Div(
+                    Label("Output URL -", _class="url"),
+                    Input(placeholder="[URL]", _class="url-field", readonly=True, value=submission["week2"]["url"]),
+                    _class="input-row"
+                ),
+                Div(
                     Div(
                         Button("Check Feedback", _class="feedback2"),
                     ),
@@ -69,6 +121,16 @@ def create_history_page():
                 ),
                 Div(
                     Img(src="/static/images/history/box.png", alt="box",_class="box4"),
+                ),
+                                Div(
+                    Label("Notes -", _class="notes"),
+                    Input(placeholder="Enter notes", _class="note-field", readonly=True, value=submission["week3"]["notes"]),
+                    _class="input-row"
+                ),
+                Div(
+                    Label("Output URL -", _class="url"),
+                    Input(placeholder="[URL]", _class="url-field", readonly=True, value=submission["week3"]["url"]),
+                    _class="input-row"
                 ),
                 Div(
                     Div(
@@ -81,7 +143,3 @@ def create_history_page():
         ),
         footer_html()
     ),
-    
-
-
-    

@@ -1,11 +1,30 @@
+import requests
 from fasthtml.common import *
 
 # This file is for storing utility functions that can be reused in multiple components
 
+# Get history data from backend
+def get_data(endpoint: str):
+    print("endpoint:", endpoint)
+    try:
+        response = requests.post(endpoint)
+        print("utils.py get_data response:", response.json())
+        return response.json()
+    except requests.exceptions.HTTPError as http_error:
+        print(f"HTTP error occurred: {http_error}")
+    except Exception as error:
+        print(f"An error occurred: {error}")
+    return {"error": "Failed to fetch data"}
+
+# Get endpoint path for backend
+def get_endpoint_path():
+    return "http://127.0.0.1:8000"
+
 # Get form attributes
 def get_form_attributes(path: str):
+    backend = get_endpoint_path() 
     attributes = {
-        "action": "http://127.0.0.1:8000" + path,
+        "action": backend + path,
         "method": "post",
     }
     print("get_form_attributes:", attributes)
@@ -52,21 +71,11 @@ def submit_form(redirect_path: str):
         }}
 
         $('.submit-btn').on('click', function(event) {{
-            // Prevent default form submission
             event.preventDefault();
 
-            // Collect form data
             const form = $(this).closest('form');
             const formData = new FormData(form[0]);
-
-            // Define redirectPath from Python
             const redirectPath = '{redirect_path}' === 'None' ? null : '{redirect_path}';
-
-            // Debugging
-            console.log("form", form); 
-            console.log("form.action", form.attr('action')); 
-            console.log("form.method", form.attr('method')); 
-            console.log("redirectPath", redirectPath);
 
             // Send data to the server using FormData
             fetch(form.attr('action'), {{

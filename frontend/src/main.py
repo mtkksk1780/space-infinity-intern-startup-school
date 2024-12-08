@@ -36,9 +36,10 @@ def submission():
 def confirmation():
     return create_confirmation_page()
 
-@app.route("/history")
-def history():
-    return create_history_page()
+@app.route("/history/{project_id}")
+def history(project_id: str):
+    print("project_id:", project_id)
+    return create_history_page(project_id = project_id)
 
 @app.route("/feedback")
 def feedback():
@@ -51,7 +52,6 @@ def login():
 @app.route("/signup")
 def signup():
     return create_signup_page()
-
 
 @app.route("/contact")
 def contact():
