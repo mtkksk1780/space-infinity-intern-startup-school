@@ -4,7 +4,7 @@ from components.footer import footer_html
 from components.utils import *
 
 def create_history_page(project_id: str):
-    endpoint = get_endpoint_path() + "/history/" + project_id
+    endpoint = get_backend_path() + "/history/" + project_id
 
     # Get history data from backend
     history_data = get_data(endpoint)
@@ -141,5 +141,7 @@ def create_history_page(project_id: str):
             ),
             _class="history-section"    
         ),
-        footer_html()
+        add_jquery(),
+        get_session_info(),
+        footer_html(),
     ),

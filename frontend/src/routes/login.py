@@ -37,7 +37,7 @@ def create_login_page():
       add_jquery(),
       add_sweet_alert(),
       footer_html(),
-      submit_form("/"),
+      submit_form("/login", "/"),
       clear_form(),
     ),
   )

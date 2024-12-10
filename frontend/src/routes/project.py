@@ -37,9 +37,10 @@ def create_project_page():
                 ),
             ),
             add_jquery(),
+            get_session_info(),
             add_sweet_alert(),
             footer_html(),
-            submit_form("None"),
+            submit_form("/project", "None"),
             clear_form(),
         ),
     )

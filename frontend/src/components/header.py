@@ -1,4 +1,5 @@
 from fasthtml.common import *
+from components.utils import *
 
 def header_html():
     return Header(
@@ -8,10 +9,11 @@ def header_html():
             Link(rel="stylesheet", href="static/styles/header.css"),
         ),
         Div(
-             A(
+            A(
                 Img(src="/static/images/header/space_infinity_log.png", alt="Space Infinity Logo", _class="logo"),
                 href="/"
-                ),
+            ),
+            P(_class="logged-in"),
             Nav(
                 Ul(
                     Li(A("Home", href="/")),
@@ -42,5 +44,5 @@ def header_html():
                 """
             ),
             _class="header-container"
-        )
+        ),
     )

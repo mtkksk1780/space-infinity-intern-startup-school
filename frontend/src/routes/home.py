@@ -2,6 +2,7 @@ import requests
 from fasthtml.common import *
 from components.header import header_html
 from components.footer import footer_html
+from components.utils import *
 
 def create_home_page():
     return Html(
@@ -65,12 +66,8 @@ def create_home_page():
                 ),
                 _class="home-section"
             ),
+            add_jquery(),
+            get_session_info(),
             footer_html() 
         ),  
     )
-
-        
-
-
-
-        
