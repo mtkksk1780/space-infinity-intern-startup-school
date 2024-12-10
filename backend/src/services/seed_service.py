@@ -5,8 +5,9 @@ async def register_seed():
     try:
         # User Table
         users = [
-            {"id": "a", "email": "a@a.a", "password": "a", "name": "Intern", "role": "Member"},
-            {"id": "c", "email": "c@c.c", "password": "c", "name": "Feedback user", "role": "Member"},
+            {"id": "a", "email": "a", "password": "a", "name": "Admin", "role": "Admin"},
+            {"id": "b", "email": "b", "password": "b", "name": "Intern", "role": "Member"},
+            {"id": "c", "email": "c", "password": "c", "name": "Feedback user", "role": "Member"},
         ]
         # Project Table
         projects = [

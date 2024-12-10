@@ -1,5 +1,6 @@
 import requests
 from fasthtml.common import *
+from time import sleep
 
 # Get endpoint path for frontend
 def get_frontend_path():
@@ -35,16 +36,21 @@ def get_session_info():
             const { role, user_id, user_name } = data.user_data;
 
             // Add form and hidden input fields
-            const hiddenFields = `
-                <input type="hidden" id="role" name="role" value="${role}">
+            const hiddenUserFieldsForHeader = `
                 <input type="hidden" id="user_id" name="user_id" value="${user_id}">
                 <input type="hidden" id="user_name" name="user_name" value="${user_name}">
             `;
-            $('.header-container').append(hiddenFields);
+            $('.header-container').append(hiddenUserFieldsForHeader);
+
+            const hiddenUserFields = `
+                <input type="hidden" name="role" value="${role}">
+                <input type="hidden" name="user_id" value="${user_id}">
+            `;
+            $('.form_section').append(hiddenUserFields);
 
             // Display logged-in user
             $(document).ready(function() {
-                if ($('#user_id').val() != undefined) {
+                if ($('#user_name').val() != undefined) {
                     $('.logged-in').text('Logged in: ' + $('#user_name').val());
                 }
             });

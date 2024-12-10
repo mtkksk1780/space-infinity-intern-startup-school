@@ -1,9 +1,10 @@
 from fastapi import APIRouter, Form
+from fastapi.responses import JSONResponse
 from src.controllers import submission_controller as controller
 
 router = APIRouter()
 
-# Get application project information
+# Get an applicable project information
 @router.post("/submission/project/{project_id}")
 async def get_project(project_id: str):
     result = await controller.get_project(project_id = project_id)
@@ -13,14 +14,14 @@ async def get_project(project_id: str):
 @router.post("/submission/complete/{project_id}")
 async def register_progress_complete(
     project_id: str,
-    progress_score: int = Form(...),
+    # progress_score: int = Form(...),
     progress_comment: str = Form(...),
     upload_link: str = Form(...)
 ):
     submission_status = "Reviewing"
     is_registered =  await controller.register_progress(
         project_id = project_id,
-        progress_score = progress_score,
+        progress_score = 10, # Temporary value
         progress_comment = progress_comment,
         upload_link = upload_link,
         submission_status = submission_status,

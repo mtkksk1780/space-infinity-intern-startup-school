@@ -11,6 +11,8 @@ def create_project_page():
             Link(rel="stylesheet", href="/static/styles/project.css"),
         ),
         Body(
+            add_jquery(),
+            get_session_info(),
             header_html(),
             Section(
                 Form(
@@ -33,11 +35,9 @@ def create_project_page():
                     Div(
                         Button("SUBMIT", type="submit", _class="submit submit-btn"),
                     ),
-                    _class="project_section"
+                    _class="project_section form_section"
                 ),
             ),
-            add_jquery(),
-            get_session_info(),
             add_sweet_alert(),
             footer_html(),
             submit_form("/project", "None"),

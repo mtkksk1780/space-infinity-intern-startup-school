@@ -51,6 +51,8 @@ def create_history_page(project_id: str):
             Link(rel="stylesheet", href="/static/styles/history.css")
         ),
         Body(
+            add_jquery(),
+            get_session_info(),
             header_html(),
             Section(
                 Div(
@@ -141,7 +143,5 @@ def create_history_page(project_id: str):
             ),
             _class="history-section"    
         ),
-        add_jquery(),
-        get_session_info(),
         footer_html(),
     ),
