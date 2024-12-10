@@ -28,9 +28,9 @@ app, rt = fast_app()
 def index():
     return create_home_page() 
 
-@app.route("/submission")
-def submission():
-    return create_submission_page()  
+@app.route("/submission/{project_id}")
+def submission(project_id: str):
+    return create_submission_page(project_id = project_id)
 
 @app.route("/confirmation")
 def confirmation():
@@ -38,7 +38,6 @@ def confirmation():
 
 @app.route("/history/{project_id}")
 def history(project_id: str):
-    print("project_id:", project_id)
     return create_history_page(project_id = project_id)
 
 @app.route("/feedback")

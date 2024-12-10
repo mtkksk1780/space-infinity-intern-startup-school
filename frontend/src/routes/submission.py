@@ -4,7 +4,18 @@ from components.header import header_html
 from components.footer import footer_html
 from components.utils import *
 
-def create_submission_page():
+def create_submission_page(project_id: str):
+    endpoint = get_backend_path() + "/submission/project/" + project_id
+
+    # Get project information from backend
+    project_info = get_data(endpoint)
+
+    # Extract project information
+    project_name = project_info["name"]
+    one_liner = project_info["one_liner"]
+    start_date = project_info["start_date"]
+    current_week = project_info["current_week"]
+
     return Html(
         Head(
             Title("Submission"),
@@ -18,15 +29,15 @@ def create_submission_page():
                     Img(src="/static/images/feedback/new_submissions.png", alt="back", _class="back"),
                 ),
                 Form(
-                    get_form_attributes("/submission/complete/{project_id}"),
-                    H2("Week 1", _class="weeks"),
-                    P("Deadline: October 21st 11:59PM "),
-                    Input(placeholder="[Project Name]", _class="project_input"),
-                    Input(placeholder="[One liner]", _class="liner_input"),
+                    get_form_attributes("/submission/complete/" + project_id),
+                    H2("Week" + current_week, _class="weeks"),
+                    P("Deadline:" + start_date),
+                    Input(placeholder="[Project Name]", _class="project_input", readonly=True, value=project_name),
+                    Input(placeholder="[One liner]", _class="liner_input", readonly=True, value=one_liner),
                     P("On a scale of 1 - 10, how’s your progress?", _class="progress"),
-                    Input(placeholder="[Progress]", _class="progress_input"),
-                    Input(placeholder="[Upload files]", _class="upload_input"),
-                    Button("SUBMIT", type="submit", _class="submit"),
+                    Input(placeholder="[Progress]", name="progress_comment", _class="progress_input"),
+                    Input(placeholder="[Upload files]", name="upload_link", _class="upload_input"),
+                    Button("SUBMIT", type="submit", _class="submit submit-btn"),
                     H3("Feeling stuck?", _class="stuck"),
                     H3("Check Category Page", _class="category"),
                 ),

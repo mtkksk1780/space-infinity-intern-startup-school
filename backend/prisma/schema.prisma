@@ -26,14 +26,14 @@ model User {
 }
 
 model Project {
-    id            String       @id @default(uuid())
-    name          String
-    oneLiner      String
-    description   String
-    register_date DateTime     @default(now())
-    userId        String
-    User          User         @relation(fields: [userId], references: [id])
-    Submission    Submission[]
+    id           String       @id @default(uuid())
+    name         String
+    oneLiner     String
+    description  String
+    registerDate DateTime     @default(now())
+    userId       String
+    User         User         @relation(fields: [userId], references: [id])
+    Submission   Submission[]
 }
 
 model Submission {
