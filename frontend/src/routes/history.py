@@ -122,7 +122,7 @@ def create_history_page(project_id: str):
                 Div(
                     Img(src="/static/images/history/box.png", alt="box",_class="box4"),
                 ),
-                                Div(
+                Div(
                     Label("Notes -", _class="notes"),
                     Input(placeholder="Enter notes", _class="note-field", readonly=True, value=submission["week3"]["notes"]),
                     _class="input-row"

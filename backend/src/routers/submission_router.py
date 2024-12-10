@@ -3,6 +3,12 @@ from src.controllers import submission_controller as controller
 
 router = APIRouter()
 
+# Get application project information
+@router.post("/submission/project/{project_id}")
+async def get_project(project_id: str):
+    result = await controller.get_project(project_id = project_id)
+    return result
+
 # Update submission records when submitting progress
 @router.post("/submission/complete/{project_id}")
 async def register_progress_complete(
@@ -20,7 +26,13 @@ async def register_progress_complete(
         submission_status = submission_status,
     )
     print("submission_router.py completed result:", is_registered)
-    return is_registered
+
+    if is_registered:
+        message = "Submission registered successfully!"
+    else:
+        message = "Submission registration failed!"
+
+    return JSONResponse(content={"result": is_registered, "message": message})
 
 
 # Update submission records when not submitting progress
@@ -37,4 +49,10 @@ async def register_progress_incomplete(
         submission_status = submission_status,
     )
     print("submission_router.py incomplete result:", is_registered)
-    return is_registered
+    
+    if is_registered:
+        message = "Submission registered successfully! (Incomplete)"
+    else:
+        message = "Submission registration failed! (Incomplete)"
+
+    return JSONResponse(content={"result": is_registered, "message": message})
