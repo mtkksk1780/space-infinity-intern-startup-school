@@ -1,5 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Response, HTTPException, Depends, Form
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from uuid import uuid4
 from src.routers import index_router as index
 from src.routers import message_router as message
 from src.routers import project_router as project
@@ -13,12 +15,13 @@ from src.routers import seed_router as seed
 from src.middlewares import auth_middleware as auth
 from src import prisma
 
+
 app = FastAPI()
 
 # CORS settings
 origins = [
     "http://127.0.0.1:5001",  # Local environment
-    "http://localhost:5001", # Local environment (localhost)
+    "http://localhost:5001",  # Local environment (localhost)
 ]
 
 app.add_middleware(
@@ -29,6 +32,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Include routers
 app.include_router(index.router)
 app.include_router(message.router)
 app.include_router(project.router)
@@ -41,10 +45,14 @@ app.include_router(footer.router)
 app.include_router(seed.router)
 app.include_router(auth.router)
 
+
 @app.on_event("startup")
 async def startup():
     await prisma.connect()
 
+
 @app.on_event("shutdown")
 async def shutdown():
     await prisma.disconnect()
+
+

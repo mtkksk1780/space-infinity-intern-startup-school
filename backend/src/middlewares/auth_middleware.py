@@ -1,5 +1,5 @@
-from fastapi import APIRouter, Response, Cookie
-from typing import Annotated
+from fastapi import APIRouter, Request, Response, Cookie, Header, HTTPException
+from fastapi.responses import JSONResponse
 from uuid import uuid4
 
 router = APIRouter()
@@ -8,27 +8,29 @@ router = APIRouter()
 session_store = {}
 
 def set_user_cookie(response: Response, user_id: str, role: str, user_name: str):
-    # Create a unique session ID
     session_id = str(uuid4())
-    # Set user data
     user_data = {
         "user_id": user_id,
         "role": role,
         "user_name": user_name
     }
-    # Save user data in session store
     session_store[session_id] = user_data
-    # Set session ID in cookies
-    response.set_cookie(key="session_id", value=session_id, httponly=True, secure=True)
-    print("auth_middleware.py set_user_cookie:", user_data)
-    return {"message": "Session ID is set in cookies."}
+    response.set_cookie(
+        key="session_id",
+        value=session_id,
+    )
+    print("auth_middleware.py set_user_cookie response.headers:", response.headers)
+    print("auth_middleware.py set_user_cookie session_store:", session_store)
 
-@router.get("/get-cookie")
-def get_user_cookie(session_id: str = Cookie(None)):
+    return session_id
+
+@router.post("/get-user-cookie/{session_id}")
+def get_user_cookie(session_id: str):
     # Get user data from session store
     user_data = session_store.get(session_id)
     if user_data:
-        print("auth_middleware.py get_user_cookie:", user_data)
-        return user_data
+        print("auth_middleware.py get_user_data:", user_data)
+        return JSONResponse(content={"session_id": session_id, "user_data": user_data, "message": "User data found in cookies."})
     else:
-        return {"message": "Session ID is not found in cookies."}
+        return JSONResponse(content={"message": "User data not found."})
+
