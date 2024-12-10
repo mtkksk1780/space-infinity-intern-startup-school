@@ -37,3 +37,16 @@ async def register_project(
     except Exception as e:
         print("project_controller.py" ,{e})
         return False
+
+
+async def get_latest_project(user_id: str):
+    try:
+        # Get project information
+        result = await project_service.get_latest_project(user_id=user_id)
+        # Extract project_id
+        project_id = result.id
+        print("project_controller.py get_latest_project project_id:", project_id)
+        return project_id
+    except Exception as e:
+        print("project_controller.py get_latest_project Error:", {e})
+        raise HTTPException(status_code=500, detail="Error fetching project information (Controller)")

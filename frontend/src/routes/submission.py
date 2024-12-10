@@ -23,7 +23,9 @@ def create_submission_page(project_id: str):
             Link(rel="stylesheet", href="/static/styles/submission.css"),
         ),
         Body(
-            header_html(), 
+            add_jquery(),
+            get_session_info(),
+            header_html(),
             Section(
                 Div(
                     Img(src="/static/images/feedback/new_submissions.png", alt="back", _class="back"),
@@ -40,11 +42,10 @@ def create_submission_page(project_id: str):
                     Button("SUBMIT", type="submit", _class="submit submit-btn"),
                     H3("Feeling stuck?", _class="stuck"),
                     H3("Check Category Page", _class="category"),
+                    _class="form_section"
                 ),
                 _class="submission-section"
             ),
-            add_jquery(),
-            get_session_info(),
             add_sweet_alert(),
             footer_html(),
             submit_form("/submission", "None"),

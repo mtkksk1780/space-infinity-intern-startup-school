@@ -11,7 +11,9 @@ def create_feedback_page():
             Link(rel="stylesheet", href="/static/styles/feedback.css"),
         ),
         Body(
-            header_html(), 
+            add_jquery(),
+            get_session_info(),
+            header_html(),
             Section(
                 Div(
                     Img(src="/static/images/feedback/backg.png",alt="feedback",_class="feedback"),
@@ -59,8 +61,6 @@ def create_feedback_page():
                     _class="feedbuck_section"
                 ),
             ),
-            add_jquery(),
-            get_session_info(),
             add_sweet_alert(),
             footer_html(),
             submit_form("/feedback", "None"),

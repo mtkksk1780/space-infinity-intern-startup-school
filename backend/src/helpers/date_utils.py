@@ -1,5 +1,5 @@
-from datetime import datetime
 import pytz
+from datetime import datetime
 
 # Get the current UTC date as a timezone-aware datetime
 def get_current_date() -> datetime:
@@ -50,3 +50,23 @@ def format_date(date: datetime) -> str:
     # Format the date as 'December 31st 11:59PM'
     return f"{month} {day}{suffix} {time}"
 
+def format_time_diff(date: datetime) -> str:
+    # Get the time difference in seconds
+    time_diff = (get_current_date() - date).total_seconds()
+
+    # Calculate the days
+    days = time_diff // (24 * 3600)
+    time_diff = time_diff % (24 * 3600)
+
+    # Calculate the hours
+    hours = time_diff // 3600
+    time_diff %= 3600
+
+    # Calculate the minutes
+    minutes = time_diff // 60
+
+    # Format the time difference as '2DAYS 23:59'
+    formatted_time_diff = f"{int(days)}DAYS {int(hours):02}:{int(minutes):02}"
+
+    return formatted_time_diff
+    

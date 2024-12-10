@@ -12,6 +12,8 @@ def create_home_page():
             Link(rel="stylesheet", href="/static/styles/home.css"),
         ),
         Body(
+            add_jquery(),
+            get_session_info(),
             header_html(), 
             Section(
                 Div(
@@ -66,8 +68,6 @@ def create_home_page():
                 ),
                 _class="home-section"
             ),
-            add_jquery(),
-            get_session_info(),
             footer_html() 
         ),  
     )
