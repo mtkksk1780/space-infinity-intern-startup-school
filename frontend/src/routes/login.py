@@ -11,7 +11,9 @@ def create_login_page():
       Link(rel="stylesheet", href="/static/styles/login.css"),
     ),
     Body(
-      header_html(),      
+      add_jquery(),
+      get_session_info("/login"),
+      header_html(),
       Section(
         Div(
           Img(src="/static/images/login/login.png",_class="login-img"),
@@ -34,7 +36,6 @@ def create_login_page():
         ),
         _class="login_section"
       ),
-      add_jquery(),
       add_sweet_alert(),
       footer_html(),
       submit_form("/login", "/"),

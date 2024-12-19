@@ -12,7 +12,7 @@ def create_feedback_page():
         ),
         Body(
             add_jquery(),
-            get_session_info(),
+            get_session_info("/feedback"),
             header_html(),
             Section(
                 Div(
@@ -63,6 +63,8 @@ def create_feedback_page():
             ),
             add_sweet_alert(),
             footer_html(),
+            confirm_form(),
+            back_form(),
             submit_form("/feedback", "None"),
             clear_form(),
         ), 

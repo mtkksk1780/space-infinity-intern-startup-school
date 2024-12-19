@@ -10,17 +10,21 @@ async def get_project(project_id: str):
 
         # Transform the start date to Toronto date
         toronto_date = date_utils.get_toronto_date(utc_date)
-        # Format the start date
-        formatted_date = date_utils.format_date(toronto_date)
-
+        
         # Week calculation
         current_week = date_utils.get_week_number(utc_date)
+
+        # Deadline calculation
+        deadline = date_utils.get_deadline(toronto_date, current_week)
+
+        # Format the start date
+        formatted_deadline = date_utils.format_date(deadline)
 
         # Extract necessary information
         project_info = {
             "name": result.name,
             "one_liner": result.oneLiner,
-            "start_date": formatted_date,
+            "deadline": formatted_deadline,
             "current_week": str(current_week),
         }
         print("submission_controller.py project_info:", project_info)

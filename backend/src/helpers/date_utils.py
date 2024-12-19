@@ -1,5 +1,5 @@
 import pytz
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # Get the current UTC date as a timezone-aware datetime
 def get_current_date() -> datetime:
@@ -70,3 +70,8 @@ def format_time_diff(date: datetime) -> str:
 
     return formatted_time_diff
     
+def get_deadline(date: datetime, week: int) -> datetime:
+    # Calculate the deadline as 7 days from the given date
+    deadline = date + timedelta(days=week * 7)
+
+    return deadline

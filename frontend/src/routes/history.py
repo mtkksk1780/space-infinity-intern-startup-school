@@ -52,7 +52,7 @@ def create_history_page(project_id: str):
         ),
         Body(
             add_jquery(),
-            get_session_info(),
+            get_session_info("/history"),
             header_html(),
             Section(
                 Div(

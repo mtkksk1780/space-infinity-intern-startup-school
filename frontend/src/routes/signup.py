@@ -1,6 +1,7 @@
 from fasthtml.common import *
 from components.header import header_html
 from components.footer import footer_html
+from components.utils import *
 
 def create_signup_page():
     return Html(
@@ -10,7 +11,9 @@ def create_signup_page():
             Link(rel="stylesheet", href="/static/styles/signup.css"),
         ),
         Body(
-            header_html(), 
+            add_jquery(),
+            get_session_info("/signup"),
+            header_html(),
             Section(
                 Div(
                     Img(src="/static/images/signup/signup.png",_class="signup"),
@@ -24,7 +27,12 @@ def create_signup_page():
                 ),
                 _class="signup_section"
             ),
-            footer_html()
+            add_sweet_alert(),
+            footer_html(),
+            confirm_form(),
+            back_form(),
+            submit_form("/signup", "/login"),
+            clear_form(),
         ),
     )
            

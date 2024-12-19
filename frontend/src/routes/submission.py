@@ -13,7 +13,7 @@ def create_submission_page(project_id: str):
     # Extract project information
     project_name = project_info["name"]
     one_liner = project_info["one_liner"]
-    start_date = project_info["start_date"]
+    deadline = project_info["deadline"]
     current_week = project_info["current_week"]
 
     return Html(
@@ -24,7 +24,7 @@ def create_submission_page(project_id: str):
         ),
         Body(
             add_jquery(),
-            get_session_info(),
+            get_session_info("/submission"),
             header_html(),
             Section(
                 Div(
@@ -33,7 +33,7 @@ def create_submission_page(project_id: str):
                 Form(
                     get_form_attributes("/submission/complete/" + project_id),
                     H2("Week" + current_week, _class="weeks"),
-                    P("Deadline:" + start_date),
+                    P("Deadline:" + deadline),
                     Input(placeholder="[Project Name]", _class="project_input", readonly=True, value=project_name),
                     Input(placeholder="[One liner]", _class="liner_input", readonly=True, value=one_liner),
                     P("On a scale of 1 - 10, how’s your progress?", _class="progress"),
@@ -48,6 +48,8 @@ def create_submission_page(project_id: str):
             ),
             add_sweet_alert(),
             footer_html(),
+            confirm_form(),
+            back_form(),
             submit_form("/submission", "None"),
             clear_form(),
         ),
