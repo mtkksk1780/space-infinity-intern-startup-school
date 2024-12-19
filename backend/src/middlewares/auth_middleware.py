@@ -16,8 +16,8 @@ def set_user_cookie(response: Response, user_id: str, role: str, user_name: str)
     }
     session_store[session_id] = user_data
     response.set_cookie(
-        key="session_id",
-        value=session_id,
+        key = "session_id",
+        value = session_id,
     )
     print("auth_middleware.py set_user_cookie response.headers:", response.headers)
     print("auth_middleware.py set_user_cookie session_store:", session_store)

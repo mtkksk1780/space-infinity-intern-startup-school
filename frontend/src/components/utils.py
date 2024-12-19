@@ -11,7 +11,7 @@ def get_backend_path():
     return "http://127.0.0.1:8000"
 
 # Get session data from the server
-def get_session_info():
+def get_session_info(source_path: str):
     return Script("""
         // Get session ID from cookies
         function getCookie(name) {
@@ -19,10 +19,12 @@ def get_session_info():
             const parts = value.split(`; ${name}=`);
             if (parts.length === 2) return parts.pop().split(';').shift();
         }
+        const source_path = '""" + source_path + """';
         const session_id = getCookie('session_id');
 
-        if (!session_id) {
-            window.location.href = '/login'; // Redirect to login page
+        if (!session_id && source_path !== '/login') {
+            // Redirect to login page if session ID is not found
+            window.location.href = '/login';
         }
 
         // Fetch session data from the server
@@ -93,13 +95,52 @@ def add_sweet_alert():
 # Clear form input field
 def clear_form():
     return Script("""
-        $(document).ready(function() {
-            $('.submit-btn').click(function() {
+        $(document).on('click', '.submit-btn', function() {
+            // $('.submit-btn').click(function() {
                 setTimeout(function() {
                     $('.input-form').val('');
                 }, 50);
-            });
         });
+    """)
+
+# Confirm form
+def confirm_form():
+    return Script(f"""
+        $(document).on('click', '.confirm-btn', function(event) {{
+            event.preventDefault();
+
+            Swal.fire({{
+                title: "Please confirm all inputs are correct before submitting.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Confirm",
+                cancelButtonText: "Back",
+            }}).then((result) => {{
+                const isConfirmed = result.isConfirmed;
+                if (isConfirmed) {{
+                    // Change the class name from confirm-btn to submit-btn
+                    $(this).removeClass('confirm-btn').addClass('submit-btn');
+                    // Change the button text from CONFIRM to SUBMIT
+                    $('.submit-btn').text('SUBMIT');
+                    // Add "BACK" button in the form section
+                    $('.input_section').append('<button class="submit-tentative back-btn">BACK</button>');
+                }}
+            }});
+        }});
+    """)
+
+# Go back to the previous button
+def back_form():
+    return Script("""
+        $(document).on('click', '.back-btn', function(event) {{
+            event.preventDefault();
+            // Delete BACK button
+            $('.back-btn').remove();
+            // Change the class name from submit-btn to confirm-btn
+            $('.submit-btn').removeClass('submit-btn').addClass('confirm-btn');
+            // Change the button text from SUBMIT to CONFIRM
+            $('.confirm-btn').text('CONFIRM');
+        }});
     """)
 
 # Submit form
@@ -125,7 +166,7 @@ def submit_form(source_path: str, redirect_path: str):
             }});
         }}
 
-        $('.submit-btn').on('click', function(event) {{
+        $(document).on('click', '.submit-btn', function(event) {{
             event.preventDefault();
 
             const form = $(this).closest('form');

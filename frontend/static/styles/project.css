@@ -112,9 +112,21 @@ border: 1px solid #000000;
 
 }
 
+.submit_tentative {
+  position: absolute;
+  width: 213px;
+  height: 74px;
+  left: 450px;
+  top: 1366px;
+  font-family: 'Jersey 20';
+  font-style: normal;
+  font-size: 40px;
+  background: #000000;
+  color: #FFFFFF;
+}
+
 .submit{
   /* Rectangle 57 */
-
 position: absolute;
 width: 213px;
 height: 74px;
@@ -124,5 +136,5 @@ font-family: 'Jersey 20';
 font-style: normal;
 font-size: 40px;
 background: #F5BC18;
-
 }
+

@@ -13,7 +13,7 @@ def create_home_page():
         ),
         Body(
             add_jquery(),
-            get_session_info(),
+            get_session_info("/"),
             header_html(), 
             Section(
                 Div(

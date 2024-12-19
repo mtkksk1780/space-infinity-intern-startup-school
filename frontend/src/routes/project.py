@@ -12,7 +12,7 @@ def create_project_page():
         ),
         Body(
             add_jquery(),
-            get_session_info(),
+            get_session_info("/project"),
             header_html(),
             Section(
                 Form(
@@ -33,13 +33,16 @@ def create_project_page():
                         _class="input_section"
                     ),
                     Div(
-                        Button("SUBMIT", type="submit", _class="submit submit-btn"),
+                        Button("CONFIRM", _class="submit confirm-btn"),
                     ),
+                    
                     _class="project_section form_section"
                 ),
             ),
             add_sweet_alert(),
             footer_html(),
+            confirm_form(),
+            back_form(),
             submit_form("/project", "None"),
             clear_form(),
         ),
