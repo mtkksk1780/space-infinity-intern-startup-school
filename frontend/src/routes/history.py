@@ -140,6 +140,27 @@ def create_history_page(project_id: str):
                         Button("Check Feedback", _class="feedback3"),
                     ),
                 ),
+                Div(
+                    H3("Week 4",_class="week4"),
+                ),
+                Div(
+                    Img(src="/static/images/history/box.png", alt="box",_class="box4"),
+                ),
+                Div(
+                    Label("Notes -", _class="notes"),
+                    Input(placeholder="Enter notes", _class="note-field", readonly=True, value=submission["week4"]["notes"]),
+                    _class="input-row"
+                ),
+                Div(
+                    Label("Output URL -", _class="url"),
+                    Input(placeholder="[URL]", _class="url-field", readonly=True, value=submission["week4"]["url"]),
+                    _class="input-row"
+                ),
+                Div(
+                    Div(
+                        Button("Check Feedback", _class="feedback4"),
+                    ),
+                ),
                 _class="input-container"
             ),
             _class="history-section"    

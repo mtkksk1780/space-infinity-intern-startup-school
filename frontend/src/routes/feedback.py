@@ -1,9 +1,19 @@
+import json
 from fasthtml.common import *
 from components.header import header_html
 from components.footer import footer_html
 from components.utils import *
 
 def create_feedback_page():
+    endpoint = get_backend_path() + "/feedback"
+
+    # Get all active submissions
+    submission_data = get_data(endpoint)
+    print("feedback.py submission_data:", submission_data)
+
+    # Convert submission_data to JSON string
+    submission_data_json = json.dumps(submission_data)
+
     return Html(
         Head(
             Title("Feedback Page"),
@@ -17,20 +27,20 @@ def create_feedback_page():
             header_html(),
             Section(
                 Div(
-                    Img(src="/static/images/feedback/backg.png",alt="feedback",_class="feedback"),
+                    Img(src="/static/images/feedback/backg.png", alt="feedback", _class="feedback"),
                     Div(
-                        Img(src="/static/images/feedback/new_submissions.png",alt="new_submissions",_class="new_submissions"),
+                        Img(src="/static/images/feedback/new_submissions.png", alt="new_submissions", _class="new_submissions"),
                     ),
                     Div(
                         Input(placeholder="[Name]", _class="input-name"),
                         Input(placeholder="[Project Name]", _class="input-project"),
-                        _class="input-container"
+                        _class="input-container list"
                     ),
                     Div(
                         Input(type="checkbox", _class="input-checkbox"),
                         Label(
                             "Leave feedback anonymously?",
-                            Br(), 
+                            Br(),
                             "If yes, check the box",
                             _class="checkbox-label"
                         ),
@@ -53,7 +63,7 @@ def create_feedback_page():
                         )
                     ),
                     Div(
-                        Label("How they can improve their project? Give them feedback.",_class="coment"),
+                        Label("How they can improve their project? Give them feedback.", _class="coment"),
                         Input(placeholder="", _class="coment-field"),
                     ),
                     Div(
@@ -67,5 +77,20 @@ def create_feedback_page():
             confirm_form(),
             back_form(),
             submit_form("/feedback", "None"),
-        ), 
+            Script(f'''
+                const submissions = JSON.parse('{submission_data_json}');
+                console.log("feedback.py submissions:", submissions);
+
+                // Create ul and li elements based on the number of submissions
+                // Display User Name and Project Name in the submission list
+                const list = document.querySelector('.list');
+                submissions.forEach(submission => {{
+                    const {{submission_id, user_name, project_name}} = submission; 
+                    const li = document.createElement('li');
+                    // Set submission_id as a link
+                    li.innerHTML = `<a href="/feedback/${{submission_id}}">${{user_name}} - ${{project_name}}</a>`;
+                    list.appendChild(li);
+                }});
+            ''')
+        ),
     )
