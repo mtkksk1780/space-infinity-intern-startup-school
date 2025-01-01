@@ -29,7 +29,7 @@ def header_html():
                 Ul(
                     Li(A("About", href="#")),
                     Li(A("History", href="/login", _id="history_link")),
-                    Li(A("Feedback", href="/feedback")),
+                    Li(A("Feedback", href="/login", _id="feedback_link")),
                     Li(A("Contact", href="/contact")),
                     _class="hamburger-menu"
                 ),
@@ -79,6 +79,7 @@ def header_html():
                         $('#project_link').attr('href', '/project');
                         $('#submission_link').attr('href', '/submission/' + project_id);
                         $('#history_link').attr('href', '/history/' + project_id);
+                        $('#feedback_link').attr('href', '/feedback');
                     })
                     .catch(error => console.error("Error fetching project id:", error));
                 }, 500);

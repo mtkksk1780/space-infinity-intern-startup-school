@@ -1,9 +1,9 @@
 from fastapi import HTTPException
-from src.services import register_service as service
+from src.services import signup_service as service
 
 async def register_email(email: str):
     try:
-        result = await service.register(
+        result = await service.signup(
             email = email,
             user_name = None,
             password = None,

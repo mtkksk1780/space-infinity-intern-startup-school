@@ -4,7 +4,7 @@ from src.services import project_service, history_service
 async def get_history(project_id: str):
     try:
         # Get project information
-        result = await project_service.get_project(project_id=project_id)
+        result = await project_service.get_project(project_id = project_id)
 
         # Extract necessary information
         project_info = {
@@ -14,7 +14,7 @@ async def get_history(project_id: str):
         }
 
         # Get submission history
-        result = await history_service.get_submission_history(project_id=project_id)
+        result = await history_service.get_submission_history(project_id = project_id)
         
         # Extract necessary information
         submission_history = []

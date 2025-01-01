@@ -2,7 +2,7 @@ from fastapi import HTTPException
 from src import prisma
 
 # Note: Need duplication check (email) before registering user information
-async def register(
+async def signup(
     email: str,
     user_name: str,
     password: str,
