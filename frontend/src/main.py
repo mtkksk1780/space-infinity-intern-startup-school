@@ -40,7 +40,7 @@ def confirmation():
 def history(project_id: str):
     return create_history_page(project_id = project_id)
 
-@app.route("/feedback")
+@app.route("/feedback/{submission_id}")
 def feedback():
     return create_feedback_page()
 

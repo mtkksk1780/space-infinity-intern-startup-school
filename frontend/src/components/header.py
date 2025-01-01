@@ -58,7 +58,8 @@ def header_html():
                         return;
                     }
 
-                    // Update the project link with the user id
+                    // Update links [1]
+                    $('#project_link').attr('href', '/project');
                     $('#submission_link').attr('href', '/project');
 
                     // Fetch the user's latest project id from the server
@@ -75,14 +76,14 @@ def header_html():
                             console.error("Error fetching project id");
                             return;
                         }
-                        // Update links with the project id
-                        $('#project_link').attr('href', '/project');
+                        
+                        // Update links [2]
                         $('#submission_link').attr('href', '/submission/' + project_id);
                         $('#history_link').attr('href', '/history/' + project_id);
                         $('#feedback_link').attr('href', '/feedback');
                     })
                     .catch(error => console.error("Error fetching project id:", error));
-                }, 500);
+                }, 300);
             });
         '''),
     )
