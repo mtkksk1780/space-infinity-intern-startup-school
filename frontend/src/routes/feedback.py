@@ -7,6 +7,7 @@ def create_feedback_page():
     return Html(
         Head(
             Title("Feedback Page"),
+            Base(href="/feedback"),
             Link(rel="stylesheet", href="/static/styles/style.css"),
             Link(rel="stylesheet", href="/static/styles/feedback.css"),
         ),
@@ -66,6 +67,5 @@ def create_feedback_page():
             confirm_form(),
             back_form(),
             submit_form("/feedback", "None"),
-            clear_form(),
         ), 
     )

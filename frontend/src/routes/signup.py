@@ -7,6 +7,7 @@ def create_signup_page():
     return Html(
         Head(
             Title("Signup Page"),
+            Base(href="/signup"),
             Link(rel="stylesheet", href="/static/styles/style.css"),
             Link(rel="stylesheet", href="/static/styles/signup.css"),
         ),
@@ -32,7 +33,6 @@ def create_signup_page():
             confirm_form(),
             back_form(),
             submit_form("/signup", "/login"),
-            clear_form(),
         ),
     )
            

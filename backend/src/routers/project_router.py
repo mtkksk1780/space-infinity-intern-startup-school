@@ -18,17 +18,14 @@ async def register_project(
     description: str = Form(...),
     user_id: str = Form(...)
 ):
-    is_registered =  await controller.register_project(
+    result =  await controller.register_project(
         project_name = project_name,
         one_liner = one_liner,
         description = description,
         user_id = user_id
     )
-    print("project_router.py result:", is_registered)
+    print("project_router.py result:", result)
 
-    if is_registered:
-        message = "Project registered successfully!"
-    else:
-        message = "Project registration failed!"
-
+    is_registered = result["result"]
+    message = result["message"]
     return JSONResponse(content={"result": is_registered, "message": message})

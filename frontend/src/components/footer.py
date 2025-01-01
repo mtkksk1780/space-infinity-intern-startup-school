@@ -45,5 +45,4 @@ def footer_html():
             ),
         ),
         add_jquery(),
-        clear_form(),
     )

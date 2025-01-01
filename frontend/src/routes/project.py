@@ -7,6 +7,7 @@ def create_project_page():
     return Html(
         Head(
             Title("Project Page"),
+            Base(href="/project"),
             Link(rel="stylesheet", href="/static/styles/style.css"),
             Link(rel="stylesheet", href="/static/styles/project.css"),
         ),
@@ -44,7 +45,6 @@ def create_project_page():
             confirm_form(),
             back_form(),
             submit_form("/project", "None"),
-            clear_form(),
         ),
     )
      

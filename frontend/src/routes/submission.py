@@ -18,8 +18,9 @@ def create_submission_page(project_id: str):
 
     return Html(
         Head(
-            Title("Submission"),
-            Link(rel="stylesheet", href="/static/styles/style.css "),
+            Title("Submission Page"),
+            Base(href="/submission"),
+            Link(rel="stylesheet", href="/static/styles/style.css"),
             Link(rel="stylesheet", href="/static/styles/submission.css"),
         ),
         Body(
@@ -34,15 +35,15 @@ def create_submission_page(project_id: str):
                     get_form_attributes("/submission/complete/" + project_id),
                     H2("Week" + current_week, _class="weeks"),
                     P("Deadline:" + deadline),
-                    Input(placeholder="[Project Name]", _class="project_input", readonly=True, value=project_name),
-                    Input(placeholder="[One liner]", _class="liner_input", readonly=True, value=one_liner),
+                    Input(placeholder="[Project Name]", _class="project_input input-form", readonly=True, value=project_name),
+                    Input(placeholder="[One liner]", _class="liner_input input-form", readonly=True, value=one_liner),
                     P("On a scale of 1 - 10, how’s your progress?", _class="progress"),
-                    Input(placeholder="[Progress]", name="progress_comment", _class="progress_input"),
-                    Input(placeholder="[Upload files]", name="upload_link", _class="upload_input"),
-                    Button("SUBMIT", type="submit", _class="submit submit-btn"),
+                    Input(placeholder="[Progress]", name="progress_comment", _class="progress_input input-form"),
+                    Input(placeholder="[Upload files]", name="upload_link", _class="upload_input input-form"),
+                    Button("CONFIRM", _class="submit confirm-btn"),
                     H3("Feeling stuck?", _class="stuck"),
                     H3("Check Category Page", _class="category"),
-                    _class="form_section"
+                    _class="input_section"
                 ),
                 _class="submission-section"
             ),
@@ -51,6 +52,5 @@ def create_submission_page(project_id: str):
             confirm_form(),
             back_form(),
             submit_form("/submission", "None"),
-            clear_form(),
         ),
     )

@@ -47,6 +47,7 @@ def create_history_page(project_id: str):
     return Html(
         Head(
             Title("History"),
+            Base(href="/history"),
             Link(rel="stylesheet", href="/static/styles/style.css"),
             Link(rel="stylesheet", href="/static/styles/history.css")
         ),

@@ -41,5 +41,4 @@ def footer_html():
       _class="footer-container"
     ),
     add_jquery(),
-    clear_form(),
   )

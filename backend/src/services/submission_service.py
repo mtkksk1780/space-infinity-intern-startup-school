@@ -157,3 +157,18 @@ async def get_selected_submission(submission_id: str):
     except Exception as e:
         print({e})
         raise HTTPException(status_code = 500, detail="Error fetching selected submission (Service)")
+
+
+# Get active week's submission
+async def get_active_submission(project_id: str):
+    try:
+        result = await prisma.submission.find_many(
+            where={
+                "isActiveWeek": True,
+                "Project": {"id": project_id},
+            },
+        )
+        return result
+    except Exception as e:
+        print({e})
+        raise HTTPException(status_code = 500, detail="Error fetching active week's submission (Service)")

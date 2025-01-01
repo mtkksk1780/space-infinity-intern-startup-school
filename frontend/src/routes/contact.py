@@ -6,6 +6,7 @@ def create_contact_page():
     return Html(
         Head(
             Title("Contact age"),
+            Base(href="/contact"),
             Link(rel="stylesheet", href="/static/styles/style.css"),
             Link(rel="stylesheet", href="/static/styles/contact.css"),
         ),
