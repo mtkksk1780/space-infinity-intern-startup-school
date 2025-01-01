@@ -22,9 +22,7 @@ def get_session_info(source_path: str):
         const source_path = '""" + source_path + """';
         const session_id = getCookie('session_id');
 
-        const authorizedPaths = ['/', '/about', '/login', '/signup'];
-
-        if (!session_id && !authorizedPaths.includes(source_path)) {
+        if (!session_id && source_path !== '/login') {
             // Redirect to login page if session ID is not found
             window.location.href = '/login';
         }
@@ -93,6 +91,17 @@ def add_jquery():
 # Add SweetAlert
 def add_sweet_alert():
     return Script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+# Clear form input field
+# def clear_form():
+#     return Script("""
+#         $(document).on('click', '.submit-btn', function() {
+#             // $('.submit-btn').click(function() {
+#                 setTimeout(function() {
+#                     $('.input-form').val('');
+#                 }, 50);
+#         });
+#     """)
 
 # Confirm form
 def confirm_form():
@@ -164,25 +173,11 @@ def submit_form(source_path: str, redirect_path: str):
                 if (sourcePath === '/login') {{
                     const session_id = data.session_id;
                     document.cookie = `session_id=${{session_id}}`;
-                }} else {{
-                    // Delete BACK button
-                    $('.back-btn').remove();
-                    // Change the class name from submit-btn to confirm-btn
-                    $('.submit-btn').removeClass('submit-btn').addClass('confirm-btn');
-                    // Change the button text from SUBMIT to CONFIRM
-                    $('.confirm-btn').text('CONFIRM'); 
                 }}
                 // Redirect to the source page
                 if (result.isConfirmed && redirectPath) {{
                     setTimeout(function() {{
                         window.location.href = redirectPath;
-                    }}, 500);
-                }}
-                // Reload the page if the source path is applicable
-                const applicablePaths = ['/submission'];
-                if (type === 'success' && result.isConfirmed && applicablePaths.includes(source_path)) {{
-                    setTimeout(function() {{
-                        location.reload();
                     }}, 500);
                 }}
             }});
@@ -209,11 +204,10 @@ def submit_form(source_path: str, redirect_path: str):
                 // Show alert message            
                 if (result) {{
                     resultAlert(data, 'success', sourcePath, redirectPath);
-                    
                     // Clear input fields
                     setTimeout(function() {{
                         $('.input-form').val('');
-                    }}, 50);   
+                    }}, 50);
                 }} else {{
                     resultAlert(data, 'error', sourcePath, null);
                 }}

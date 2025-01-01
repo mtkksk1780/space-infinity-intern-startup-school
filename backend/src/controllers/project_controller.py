@@ -9,6 +9,11 @@ async def register_project(
     description: str,
     user_id: str
 ):
+
+    # Validation check
+    if not project_name or not one_liner or not description:
+        return {"result": False, "message": "Please fill in all fields."}
+
     try:
         # Generate project_id using uuid
         project_id = str(uuid.uuid4())
@@ -21,9 +26,10 @@ async def register_project(
             description = description,
             user_id = user_id
         )
+
         print("project_controller.py result_project:", result_project)
         if not result_project:
-            return False
+            return {"result": False, "message": "Project registration failed!"}
 
         # Register submission template records to the Submission table
         result_submission = await submission_service.create_submission_template(
@@ -31,12 +37,13 @@ async def register_project(
         )
         print("project_controller.py result_submission:", result_submission)
         if not result_submission:
-            return False
+            return {"result": False, "message": "Project registration failed!"}
 
-        return True
+        return {"result": True, "message": "Project registered successfully!"}
+
     except Exception as e:
         print("project_controller.py" ,{e})
-        return False
+        return {"result": False, "message": "Project registration failed!"}
 
 
 async def get_latest_project(user_id: str):

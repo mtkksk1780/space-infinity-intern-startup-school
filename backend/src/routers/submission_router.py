@@ -19,20 +19,17 @@ async def register_progress_complete(
     upload_link: str = Form(...)
 ):
     submission_status = "Reviewing"
-    is_registered =  await controller.register_progress(
+    result =  await controller.register_progress(
         project_id = project_id,
         progress_score = 10, # Temporary value
         progress_comment = progress_comment,
         upload_link = upload_link,
         submission_status = submission_status,
     )
-    print("submission_router.py completed result:", is_registered)
+    print("submission_router.py completed result:", result)
 
-    if is_registered:
-        message = "Submission registered successfully!"
-    else:
-        message = "Submission registration failed!"
-
+    is_registered = result["result"]
+    message = result["message"]
     return JSONResponse(content={"result": is_registered, "message": message})
 
 
@@ -44,16 +41,13 @@ async def register_progress_incomplete(
     submission_status = "Incomplete"
     is_registered =  await controller.register_progress(
         project_id = project_id,
-        progress_score = None,
-        progress_comment = None,
-        upload_link = None,
+        progress_score = 0,
+        progress_comment = "None",
+        upload_link = "None",
         submission_status = submission_status,
     )
-    print("submission_router.py incomplete result:", is_registered)
+    print("submission_router.py incomplete result:", result)
     
-    if is_registered:
-        message = "Submission registered successfully! (Incomplete)"
-    else:
-        message = "Submission registration failed! (Incomplete)"
-
+    is_registered = result["result"]
+    message = result["message"]
     return JSONResponse(content={"result": is_registered, "message": message})

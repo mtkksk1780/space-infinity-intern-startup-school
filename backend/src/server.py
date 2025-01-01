@@ -3,7 +3,6 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from uuid import uuid4
 from src.routers import index_router as index
-from src.routers import message_router as message
 from src.routers import project_router as project
 from src.routers import submission_router as submission
 from src.routers import feedback_router as feedback
@@ -35,7 +34,6 @@ app.add_middleware(
 
 # Include routers
 app.include_router(index.router)
-app.include_router(message.router)
 app.include_router(project.router)
 app.include_router(submission.router)
 app.include_router(feedback.router)

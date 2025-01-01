@@ -7,6 +7,7 @@ def create_login_page():
   return Html(
     Head(
       Title("Login Page"),
+      Base(href="/login"),
       Link(rel="stylesheet", href="/static/styles/style.css"),
       Link(rel="stylesheet", href="/static/styles/login.css"),
     ),
@@ -39,6 +40,5 @@ def create_login_page():
       add_sweet_alert(),
       footer_html(),
       submit_form("/login", "/"),
-      clear_form(),
     ),
   )

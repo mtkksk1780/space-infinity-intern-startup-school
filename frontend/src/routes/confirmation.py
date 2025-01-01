@@ -6,6 +6,7 @@ def create_confirmation_page():
     return Html(
         Head(
             Title("Submission Page (Confirmation)"),
+            Base(href="/confirmation"),
             Link(rel="stylesheet", href="/static/styles/style.css"),
         ),
         Body(
