@@ -44,7 +44,7 @@ def create_project_page():
             footer_html(),
             confirm_form(),
             back_form(),
-            submit_form("/project", "None"),
+            submit_form("/project", "/"),
         ),
     )
      
