@@ -61,7 +61,4 @@ def contact():
 def project():
     return create_project_page()
 
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", port=5001, reload=True)
+serve()

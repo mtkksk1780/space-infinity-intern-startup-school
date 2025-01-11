@@ -1,4 +1,6 @@
 fastapi
 uvicorn
-prisma
 python-dotenv
+python-multipart
+prisma
+pytz

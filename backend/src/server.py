@@ -22,7 +22,7 @@ app = FastAPI()
 
 # CORS settings
 origins = [
-    "http://127.0.0.1:5001",  # Local environment
+    "http://0.0.0.0:5001",  # Local environment
     "http://localhost:5001",  # Local environment (localhost)
     "http://space-infinity-intern-startup-school.vercel.app",  # Production environment
 ]
