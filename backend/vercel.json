@@ -7,8 +7,5 @@
         "pythonVersion": "3.x"
       }
     }
-  ],
-  "scripts": {
-    "build": "python3 -m pip install -r api/requirements.txt"
-  }
+  ]
 }
