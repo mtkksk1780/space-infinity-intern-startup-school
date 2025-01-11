@@ -1,7 +1,6 @@
 from fastapi import HTTPException
 from src import prisma
 
-
 async def get_account(
     user_id: str
 ):

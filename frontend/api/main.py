@@ -1,8 +1,9 @@
-from fasthtml.common import *
-
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from fasthtml.common import *
+
+
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../src'))
 
 from routes.home import create_home_page
 
