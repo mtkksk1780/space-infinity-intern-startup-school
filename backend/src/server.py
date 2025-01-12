@@ -21,7 +21,7 @@ from src.middlewares import auth_middleware as auth
 
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../prisma/generated')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../prisma')))
-# print("sys.path:", sys.path)
+print("sys.path:", sys.path)
 # print(os.listdir('/Users/masatotakakusaki/Project/Group/Tenatch/space-infinity-intern-startup-school/backend/prisma/generated'))
 # from prisma import Prisma
 # from prisma.generated import Prisma
