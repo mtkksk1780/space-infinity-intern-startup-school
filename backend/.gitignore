@@ -7,9 +7,15 @@ wheels/
 *.egg-info
 path/
 
+# node_modules
+node_modules/
+
 # venv
 .venv
 
 # env
 .env
+
+# prisma generated files
+# prisma/generated/
 

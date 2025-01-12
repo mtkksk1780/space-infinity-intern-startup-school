@@ -1,5 +1,4 @@
 from fastapi import HTTPException
-from src import prisma
 
 async def register_feedback(
     evaluation_rate: int,
@@ -8,6 +7,7 @@ async def register_feedback(
     user_id: str,
     is_anonymous: bool,
 ):
+    from src.server import prisma
     try:
         result = await prisma.feedback.create(data={
             "evaluationRate": evaluation_rate,

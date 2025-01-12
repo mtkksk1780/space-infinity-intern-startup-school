@@ -1,8 +1,8 @@
-from fasthtml.common import *
-
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from fasthtml.common import *
+
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../src'))
 
 from routes.home import create_home_page
 
@@ -60,7 +60,4 @@ def contact():
 def project():
     return create_project_page()
 
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="127.0.0.1", port=5001, reload=True)
+serve()

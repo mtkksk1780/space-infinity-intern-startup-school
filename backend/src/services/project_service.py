@@ -1,7 +1,9 @@
 from fastapi import HTTPException
-from src import prisma
 
-async def get_latest_project(user_id: str):
+async def get_latest_project(
+    user_id: str
+):
+    from src.server import prisma
     try:
         # Fetch all projects for the user, ordered by registerDate in descending order
         results = await prisma.project.find_many(
@@ -19,6 +21,7 @@ async def get_latest_project(user_id: str):
 async def get_project(
     project_id: str
 ):
+    from src.server import prisma
     try:
         result = await prisma.project.find_unique(where={"id": project_id})
         return result
@@ -34,6 +37,7 @@ async def register_project(
     description: str,
     user_id: str
 ):
+    from src.server import prisma
     try:
         result = await prisma.project.create(data={
             "id": project_id,

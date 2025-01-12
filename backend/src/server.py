@@ -1,3 +1,6 @@
+import sys
+import os
+from dotenv import load_dotenv
 from fastapi import FastAPI, Request, Response, HTTPException, Depends, Form
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -14,15 +17,17 @@ from src.routers import account_router as account
 from src.routers import footer_router as footer
 from src.routers import seed_router as seed
 from src.middlewares import auth_middleware as auth
-from src import prisma
+from src.prisma.generated.client import Prisma
 
-
+load_dotenv()
 app = FastAPI()
+prisma = Prisma()
 
 # CORS settings
 origins = [
-    "http://127.0.0.1:5001",  # Local environment
+    "http://0.0.0.0:5001",  # Local environment
     "http://localhost:5001",  # Local environment (localhost)
+    "http://space-infinity-intern-startup-school.vercel.app",  # Production environment
 ]
 
 app.add_middleware(
@@ -56,5 +61,3 @@ async def startup():
 @app.on_event("shutdown")
 async def shutdown():
     await prisma.disconnect()
-
-

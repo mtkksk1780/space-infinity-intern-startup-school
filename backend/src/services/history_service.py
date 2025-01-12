@@ -1,7 +1,9 @@
 from fastapi import HTTPException
-from src import prisma
 
-async def get_submission_history(project_id: str):
+async def get_submission_history(
+    project_id: str
+):
+    from src.server import prisma
     try:
         result = await prisma.submission.find_many(
             where = {"projectId": project_id},

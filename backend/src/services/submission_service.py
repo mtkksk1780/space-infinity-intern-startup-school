@@ -1,10 +1,10 @@
 from fastapi import HTTPException
-from src import prisma
 
 # Create submission template records for 4 weeks
 async def create_submission_template(
     project_id: str
 ):
+    from src.server import prisma
     try:
         print("project_id:", project_id)
         templates = [
@@ -30,6 +30,7 @@ async def register_progress(
     upload_link: str,
     submission_status: str,
 ):
+    from src.server import prisma
     try:
         # Update the record with the given projectId and active week
         result = await prisma.submission.update_many(
@@ -56,6 +57,7 @@ async def register_progress(
 async def update_status(
     project_id: str
 ):
+    from src.server import prisma
     try:
         # Step1: Get the next and current week's submission record
         next_week_submission = await prisma.submission.find_first(
@@ -119,6 +121,7 @@ async def update_status(
 
 # Get all active submissions
 async def get_active_submissions():
+    from src.server import prisma
     try:
         result = await prisma.submission.find_many(
             where={
@@ -139,7 +142,10 @@ async def get_active_submissions():
 
 
 # Get selected submission
-async def get_selected_submission(submission_id: str):
+async def get_selected_submission(
+    submission_id: str
+):
+    from src.server import prisma
     try:
         result = await prisma.submission.find_unique(
             where={
@@ -160,7 +166,10 @@ async def get_selected_submission(submission_id: str):
 
 
 # Get active week's submission
-async def get_active_submission(project_id: str):
+async def get_active_submission(
+    project_id: str
+):
+    from src.server import prisma
     try:
         result = await prisma.submission.find_many(
             where={

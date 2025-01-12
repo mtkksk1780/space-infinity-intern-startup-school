@@ -1,10 +1,10 @@
 from fastapi import HTTPException
-from src import prisma
 
 async def login(
     email: str,
     password: str
 ):
+    from src.server import prisma
     try:
         result = await prisma.user.find_unique(where={
             "email": email,

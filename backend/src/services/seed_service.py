@@ -1,7 +1,7 @@
 from fastapi import HTTPException
-from src import prisma
 
 async def register_seed():
+    from src.server import prisma
     try:
         # User Table
         users = [

@@ -1,10 +1,9 @@
 from fastapi import HTTPException
-from src import prisma
-
 
 async def get_account(
     user_id: str
 ):
+    from src.server import prisma
     try:
         result = await prisma.user.find_unique(where = {"id": user_id})
         return result
@@ -19,6 +18,7 @@ async def update_account(
     password: str,
     user_id: int
 ):
+    from src.server import prisma
     try:
         result = await prisma.user.update(
             data = {
