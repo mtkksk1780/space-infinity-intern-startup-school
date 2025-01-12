@@ -1,14 +1,17 @@
+import os
 import requests
 from fasthtml.common import *
 from time import sleep
 
 # Get endpoint path for frontend
 def get_frontend_path():
-    return "http://127.0.0.1:5001"
+    frontend_host = os.getenv("FRONTEND_ORIGIN", "http://0.0.0.1:5001")
+    return frontend_host
 
 # Get endpoint path for backend
 def get_backend_path():
-    return "http://127.0.0.1:8000"
+    backend_host = os.getenv("BACKEND_ORIGIN", "http://127.0.0.1:8000")
+    return backend_host
 
 # Get session data from the server
 def get_session_info(source_path: str):
