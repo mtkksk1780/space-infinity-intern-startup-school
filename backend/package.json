@@ -4,7 +4,7 @@
   "description": "space-infinity-intern-startup-school-backend",
   "main": "api/main.py",
   "scripts": {
-    "build": "python3 -m pip install -r requirements.txt"
+    "build": "python3 -m pip install -r requirements.txt && prisma migrate reset --force"
   },
   "author": "",
   "license": "ISC",

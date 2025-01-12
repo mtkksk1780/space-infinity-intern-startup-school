@@ -17,14 +17,6 @@ from src.routers import account_router as account
 from src.routers import footer_router as footer
 from src.routers import seed_router as seed
 from src.middlewares import auth_middleware as auth
-# from src import prisma
-
-# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../prisma/generated')))
-# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../prisma')))
-# print("sys.path:", sys.path)
-# print(os.listdir('/Users/masatotakakusaki/Project/Group/Tenatch/space-infinity-intern-startup-school/backend/prisma/generated'))
-# from prisma import Prisma
-# from prisma.generated import Prisma
 from src.prisma.generated.client import Prisma
 
 load_dotenv()
