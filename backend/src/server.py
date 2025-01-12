@@ -1,3 +1,5 @@
+import sys
+import os
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request, Response, HTTPException, Depends, Form
 from fastapi.responses import JSONResponse
@@ -15,10 +17,15 @@ from src.routers import account_router as account
 from src.routers import footer_router as footer
 from src.routers import seed_router as seed
 from src.middlewares import auth_middleware as auth
-from src import prisma
+# from src import prisma
+# from prisma.generated import Prisma
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../prisma/generated'))
+from prisma import Prisma
+
 
 load_dotenv()
 app = FastAPI()
+prisma = Prisma()
 
 # CORS settings
 origins = [

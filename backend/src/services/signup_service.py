@@ -1,5 +1,4 @@
 from fastapi import HTTPException
-from src import prisma
 
 # Note: Need duplication check (email) before registering user information
 async def signup(
@@ -8,6 +7,7 @@ async def signup(
     password: str,
     role: str
 ):
+    from src.server import prisma
     try:
         result = await prisma.user.create(data={
             "email": email,

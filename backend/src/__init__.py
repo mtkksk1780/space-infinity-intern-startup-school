@@ -1,3 +1,3 @@
-from prisma import Prisma
+# from prisma import Prisma
 
-prisma = Prisma()
+# prisma = Prisma()
