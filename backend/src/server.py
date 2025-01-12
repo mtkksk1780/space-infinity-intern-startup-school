@@ -27,7 +27,7 @@ prisma = Prisma()
 origins = [
     "http://0.0.0.0:5001",  # Local environment
     "http://localhost:5001",  # Local environment (localhost)
-    "http://space-infinity-intern-startup-school.vercel.app",  # Production environment
+    "https://space-infinity-intern-startup-school.vercel.app",  # Production environment
 ]
 
 app.add_middleware(
