@@ -2,6 +2,7 @@ generator client {
     provider             = "prisma-client-py"
     recursive_type_depth = 5
     output               = "./generated"
+    binaryTargets        = ["native", "debian-openssl-1.1.x"]
 }
 
 datasource db {

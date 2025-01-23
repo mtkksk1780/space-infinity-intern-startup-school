@@ -86,16 +86,25 @@ __all__ = (
 log: logging.Logger = logging.getLogger(__name__)
 
 # [ADD] Add the path to the schema.prisma file and the binary paths
-# root_path = Path(__file__).parent.parent
 current_path = Path(__file__)
 print("current_path", current_path)
 parent_path = current_path.parent.parent
 print("parent_path", parent_path)
 SCHEMA_PATH = parent_path / 'schema.prisma'
 PACKAGED_SCHEMA_PATH = parent_path / 'schema.prisma'
+
+print("sys.platform", sys.platform)
+if sys.platform.startswith("darwin"):
+	query_engine_path = parent_path / "query-engine-darwin"    
+else:
+	query_engine_path = parent_path / "query-engine-debian-openssl-1.1.x"    
+
+
+print(f"Using query engine: {query_engine_path}")
+
 BINARY_PATHS = model_parse(BinaryPaths, {
     'queryEngine': {
-        'darwin': str(parent_path / 'query-engine-darwin')
+        sys.platform: str(query_engine_path)
     },
     'introspectionEngine': {},
     'migrationEngine': {},
@@ -108,7 +117,7 @@ ENGINE_TYPE: EngineType = EngineType.binary
 # SCHEMA_PATH = Path('/Users/masatotakakusaki/Project/Group/Tenatch/space-infinity-intern-startup-school/backend/src/prisma/schema.prisma')
 # PACKAGED_SCHEMA_PATH = Path(__file__).parent.joinpath('schema.prisma')
 # ENGINE_TYPE: EngineType = EngineType.binary
-# BINARY_PATHS = model_parse(BinaryPaths, {'queryEngine': {'darwin': '/Users/masatotakakusaki/.cache/prisma-python/binaries/5.17.0/393aa359c9ad4a4bb28630fb5613f9c281cde053/node_modules/prisma/query-engine-darwin'}, 'introspectionEngine': {}, 'migrationEngine': {}, 'libqueryEngine': {}, 'prismaFmt': {}})
+# BINARY_PATHS = model_parse(BinaryPaths, {'queryEngine': {'darwin': '/Users/masatotakakusaki/.cache/prisma-python/binaries/5.17.0/393aa359c9ad4a4bb28630fb5613f9c281cde053/node_modules/prisma/query-engine-darwin', 'debian-openssl-1.1.x': '/Users/masatotakakusaki/.cache/prisma-python/binaries/5.17.0/393aa359c9ad4a4bb28630fb5613f9c281cde053/node_modules/prisma/query-engine-debian-openssl-1.1.x'}, 'introspectionEngine': {}, 'migrationEngine': {}, 'libqueryEngine': {}, 'prismaFmt': {}})
 
 
 class Prisma(AsyncBasePrisma):
