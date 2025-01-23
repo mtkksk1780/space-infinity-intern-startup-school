@@ -1,6 +1,7 @@
 import sys
 import os
 from dotenv import load_dotenv
+from pathlib import Path
 from fastapi import FastAPI, Request, Response, HTTPException, Depends, Form
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -18,11 +19,28 @@ from src.routers import footer_router as footer
 from src.routers import seed_router as seed
 from src.middlewares import auth_middleware as auth
 # from src.prisma.generated.client import Prisma
-from src.prisma.generated.client import Client
+from src.prisma.generated.client import *
 
 load_dotenv()
 app = FastAPI()
+
+# Prisma settings
+# BASE_DIR = Path(__file__).resolve().parent
+# CLIENT_PATH = BASE_DIR / "src/prisma/generated"
 prisma = Client()
+
+@app.on_event("startup")
+async def startup():
+    try:
+        await prisma.connect()
+        print("✅ Connected to the Prisma database")
+    except Exception as e:
+        print(f"❌ Failed to connect to the Prisma database: {e}")
+
+@app.on_event("shutdown")
+async def shutdown():
+    await prisma.disconnect()
+
 
 # CORS settings
 origins = [
@@ -38,22 +56,6 @@ app.add_middleware(
     allow_methods = ["*"],
     allow_headers = ["*"],
 )
-
-# @app.on_event("startup")
-# async def startup():
-#     await prisma.connect()
-
-@app.on_event("startup")
-async def startup():
-    try:
-        await prisma.connect()
-        print("✅ Connected to the Prisma database")
-    except Exception as e:
-        print(f"❌ Failed to connect to the Prisma database: {e}")
-
-@app.on_event("shutdown")
-async def shutdown():
-    await prisma.disconnect()
 
 
 # Include routers

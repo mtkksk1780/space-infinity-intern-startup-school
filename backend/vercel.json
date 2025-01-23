@@ -1,3 +1,6 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/api/app" }]
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/app" }],
+  "hooks": {
+    "build": "pip install -r backend/requirements.txt && cd backend/src && prisma generate"
+  }
 }
