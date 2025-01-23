@@ -19,7 +19,7 @@ from src.routers import footer_router as footer
 from src.routers import seed_router as seed
 from src.middlewares import auth_middleware as auth
 # from src.prisma.generated.client import Prisma
-from src.prisma.generated.client import *
+# from src.prisma.generated.client import *
 
 load_dotenv()
 app = FastAPI()
@@ -27,7 +27,7 @@ app = FastAPI()
 # Prisma settings
 # BASE_DIR = Path(__file__).resolve().parent
 # CLIENT_PATH = BASE_DIR / "src/prisma/generated"
-prisma = Prisma()
+# prisma = Prisma()
 # prisma._internal_engine = './prisma/query-engine-darwin'
 # print("prisma", prisma)
 # print("prisma._internal_engine", prisma._internal_engine)
