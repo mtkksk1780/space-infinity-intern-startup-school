@@ -86,12 +86,16 @@ __all__ = (
 log: logging.Logger = logging.getLogger(__name__)
 
 # [ADD] Add the path to the schema.prisma file and the binary paths
-root_path = Path(__file__).parent.parent
-SCHEMA_PATH = root_path / 'schema.prisma'
-PACKAGED_SCHEMA_PATH = root_path / 'schema.prisma'
+# root_path = Path(__file__).parent.parent
+current_path = Path(__file__)
+print("current_path", current_path)
+parent_path = current_path.parent.parent
+print("parent_path", parent_path)
+SCHEMA_PATH = parent_path / 'schema.prisma'
+PACKAGED_SCHEMA_PATH = parent_path / 'schema.prisma'
 BINARY_PATHS = model_parse(BinaryPaths, {
     'queryEngine': {
-        'darwin': str(root_path / 'query-engine-darwin')
+        'darwin': str(parent_path / 'query-engine-darwin')
     },
     'introspectionEngine': {},
     'migrationEngine': {},
@@ -167,7 +171,7 @@ class Prisma(AsyncBasePrisma):
         return {
             'name': 'db',
             'url': OptionalValueFromEnvVar(**{'value': None, 'fromEnvVar': 'DATABASE_URL'}).resolve(),
-            'source_file_path': '/Users/masatotakakusaki/Project/Group/Tenatch/space-infinity-intern-startup-school/backend/src/prisma/schema.prisma',
+            'source_file_path': parent_path / 'schema.prisma',
         }
 
     async def execute_raw(self, query: LiteralString, *args: Any) -> int:
