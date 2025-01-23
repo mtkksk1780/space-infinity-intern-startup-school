@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "space-infinity-intern-startup-school-backend",
   "main": "api/main.py",
+  "scripts": {
+    "build": "python3 -m pip install -r requirements.txt && src && python3 -m prisma generate"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
