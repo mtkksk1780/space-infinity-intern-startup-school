@@ -9,9 +9,9 @@ async def get_account(
     # prisma = Client()
     # prisma = Prisma()
     try:
-        # await prisma.connect()
+        await prisma.connect()
         result = await prisma.user.find_unique(where = {"id": user_id})
-        # await prisma.disconnect()
+        await prisma.disconnect()
         return result
     except Exception as e:
         print({e})
