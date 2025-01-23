@@ -38,6 +38,23 @@ app.add_middleware(
     allow_headers = ["*"],
 )
 
+# @app.on_event("startup")
+# async def startup():
+#     await prisma.connect()
+
+@app.on_event("startup")
+async def startup():
+    try:
+        await prisma.connect()
+        print("✅ Connected to the Prisma database")
+    except Exception as e:
+        print(f"❌ Failed to connect to the Prisma database: {e}")
+
+@app.on_event("shutdown")
+async def shutdown():
+    await prisma.disconnect()
+
+
 # Include routers
 app.include_router(index.router)
 app.include_router(project.router)
@@ -51,13 +68,3 @@ app.include_router(account.router)
 app.include_router(footer.router)
 app.include_router(seed.router)
 app.include_router(auth.router)
-
-
-@app.on_event("startup")
-async def startup():
-    await prisma.connect()
-
-
-@app.on_event("shutdown")
-async def shutdown():
-    await prisma.disconnect()
