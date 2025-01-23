@@ -150,7 +150,7 @@ class Prisma(AsyncBasePrisma):
     def _default_datasource(self) -> Datasource:
         return {
             'name': 'db',
-            'url': OptionalValueFromEnvVar(**{'value': None, 'fromEnvVar': 'DATABASE_URL'}).resolve(),
+            'url': OptionalValueFromEnvVar(**{'value': None, 'fromEnvVar': 'DATABASE_URL_UNPOOLED'}).resolve(),
             'source_file_path': '/Users/masatotakakusaki/Project/Group/Tenatch/space-infinity-intern-startup-school/backend/src/prisma/schema.prisma',
         }
 
