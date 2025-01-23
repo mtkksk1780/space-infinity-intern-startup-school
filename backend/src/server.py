@@ -32,17 +32,17 @@ prisma = Prisma()
 # print("prisma", prisma)
 # print("prisma._internal_engine", prisma._internal_engine)
 
-@app.on_event("startup")
-async def startup():
-    try:
-        await prisma.connect()
-        print("✅ Connected to the Prisma database")
-    except Exception as e:
-        print(f"❌ Failed to connect to the Prisma database: {e}")
+# @app.on_event("startup")
+# async def startup():
+#     try:
+#         await prisma.connect()
+#         print("✅ Connected to the Prisma database")
+#     except Exception as e:
+#         print(f"❌ Failed to connect to the Prisma database: {e}")
 
-@app.on_event("shutdown")
-async def shutdown():
-    await prisma.disconnect()
+# @app.on_event("shutdown")
+# async def shutdown():
+#     await prisma.disconnect()
 
 
 # CORS settings
