@@ -1,14 +1,3 @@
 {
-  "builds": [
-    {
-      "src": "backend/src/api/app.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "50mb"
-      }
-    }
-  ],
-  "build": {
-    "command": "pip install -r backend/requirements.txt && cd backend/src && prisma generate"
-  }
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/app" }]
 }
