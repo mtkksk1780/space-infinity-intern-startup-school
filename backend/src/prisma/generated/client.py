@@ -95,16 +95,18 @@ PACKAGED_SCHEMA_PATH = parent_path / 'schema.prisma'
 
 print("sys.platform", sys.platform)
 if sys.platform.startswith("darwin"):
-	query_engine_path = parent_path / "query-engine-darwin"    
+    engine_build_name = "darwin"
+    query_engine_path = parent_path / "query-engine-darwin"    
 else:
-	query_engine_path = parent_path / "query-engine-debian-openssl-1.1.x"    
+    engine_build_name = "debian-openssl-1.1.x"
+    query_engine_path = parent_path / "query-engine-debian-openssl-1.1.x"    
 
 
 print(f"Using query engine: {query_engine_path}")
 
 BINARY_PATHS = model_parse(BinaryPaths, {
     'queryEngine': {
-        sys.platform: str(query_engine_path)
+        engine_build_name: str(query_engine_path)
     },
     'introspectionEngine': {},
     'migrationEngine': {},
