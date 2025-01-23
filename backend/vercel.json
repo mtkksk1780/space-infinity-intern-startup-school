@@ -1,6 +1,14 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/api/app" }],
-  "hooks": {
-    "build": "pip install -r backend/requirements.txt && cd backend/src && prisma generate"
+  "builds": [
+    {
+      "src": "backend/src/api/app.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "50mb"
+      }
+    }
+  ],
+  "postbuild": {
+    "command": "pip install -r backend/requirements.txt && cd backend/src && prisma generate"
   }
 }
