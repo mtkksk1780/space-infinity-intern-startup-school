@@ -27,7 +27,10 @@ app = FastAPI()
 # Prisma settings
 # BASE_DIR = Path(__file__).resolve().parent
 # CLIENT_PATH = BASE_DIR / "src/prisma/generated"
-prisma = Client()
+prisma = Prisma()
+# prisma._internal_engine = './prisma/query-engine-darwin'
+# print("prisma", prisma)
+# print("prisma._internal_engine", prisma._internal_engine)
 
 @app.on_event("startup")
 async def startup():
