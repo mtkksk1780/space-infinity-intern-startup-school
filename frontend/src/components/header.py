@@ -1,7 +1,11 @@
+import os
 from fasthtml.common import *
 from components.utils import *
 
 def header_html():
+    backend_path = get_backend_path()
+    print("header.py backend_path:", backend_path)
+
     return Header(
         Head(
             Title("Home Page"),
@@ -63,7 +67,7 @@ def header_html():
                     $('#submission_link').attr('href', '/project');
 
                     // Fetch the user's latest project id from the server
-                    fetch('http://127.0.0.1:8000/project/' + user_id, {
+                    fetch(backend_path + '/project/' + user_id, {
                         method: 'POST',
                         credentials: 'include',
                     })

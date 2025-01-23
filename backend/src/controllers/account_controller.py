@@ -7,6 +7,10 @@ async def get_account(user_id: str):
         # Get user information
         result = await service.get_account(user_id = user_id)
 
+        # Check if user exists
+        if not result:
+            return {"result": False, "message": "User not found."}
+
         # Extract necessary information
         account_info = {
             "name": result.name,
@@ -15,11 +19,10 @@ async def get_account(user_id: str):
         }
 
         print("account_controller.py account_info:", account_info)
-        return account_info
+        return {"result": True, "account_info": account_info}
     except Exception as e:
         print("account_controller.py Error:", {e})
-        raise HTTPException(status_code=500, detail="Error fetching account (Controller)")
-
+        return {"result": False, "message": "Failed to get account information.", "error": {e}}
 
 
 async def update_account(

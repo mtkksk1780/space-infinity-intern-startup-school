@@ -16,6 +16,10 @@ def get_backend_path():
 # Get session data from the server
 def get_session_info(source_path: str):
     return Script("""
+        // Get Backend path
+        backend_path = '""" + get_backend_path() + """';
+        console.log("get_session_info backend_path:", backend_path);
+
         // Get session ID from cookies
         function getCookie(name) {
             const value = `; ${document.cookie}`;
@@ -33,7 +37,7 @@ def get_session_info(source_path: str):
         }
 
         // Fetch session data from the server
-        fetch('http://127.0.0.1:8000/get-user-cookie/' + session_id, {
+        fetch(backend_path + '/get-user-cookie/' + session_id, {
             method: 'POST',
             credentials: 'include',
         })

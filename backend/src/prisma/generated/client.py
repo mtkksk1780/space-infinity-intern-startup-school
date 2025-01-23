@@ -85,10 +85,39 @@ __all__ = (
 
 log: logging.Logger = logging.getLogger(__name__)
 
-SCHEMA_PATH = Path('/Users/masatotakakusaki/Project/Group/Tenatch/space-infinity-intern-startup-school/backend/src/prisma/schema.prisma')
-PACKAGED_SCHEMA_PATH = Path(__file__).parent.joinpath('schema.prisma')
+# [ADD] Add the path to the schema.prisma file and the binary paths
+current_path = Path(__file__)
+print("current_path", current_path)
+parent_path = current_path.parent.parent
+print("parent_path", parent_path)
+SCHEMA_PATH = parent_path / 'schema.prisma'
+PACKAGED_SCHEMA_PATH = parent_path / 'schema.prisma'
+
+print("sys.platform", sys.platform)
+if sys.platform.startswith("darwin"):
+	query_engine_path = parent_path / "query-engine-darwin"    
+else:
+	query_engine_path = parent_path / "query-engine-debian-openssl-1.1.x"    
+
+
+print(f"Using query engine: {query_engine_path}")
+
+BINARY_PATHS = model_parse(BinaryPaths, {
+    'queryEngine': {
+        sys.platform: str(query_engine_path)
+    },
+    'introspectionEngine': {},
+    'migrationEngine': {},
+    'libqueryEngine': {},
+    'prismaFmt': {}
+})
+print("BINARY_PATHS", BINARY_PATHS)
 ENGINE_TYPE: EngineType = EngineType.binary
-BINARY_PATHS = model_parse(BinaryPaths, {'queryEngine': {'darwin': '/Users/masatotakakusaki/.cache/prisma-python/binaries/5.17.0/393aa359c9ad4a4bb28630fb5613f9c281cde053/node_modules/prisma/query-engine-darwin'}, 'introspectionEngine': {}, 'migrationEngine': {}, 'libqueryEngine': {}, 'prismaFmt': {}})
+
+# SCHEMA_PATH = Path('/Users/masatotakakusaki/Project/Group/Tenatch/space-infinity-intern-startup-school/backend/src/prisma/schema.prisma')
+# PACKAGED_SCHEMA_PATH = Path(__file__).parent.joinpath('schema.prisma')
+# ENGINE_TYPE: EngineType = EngineType.binary
+# BINARY_PATHS = model_parse(BinaryPaths, {'queryEngine': {'darwin': '/Users/masatotakakusaki/.cache/prisma-python/binaries/5.17.0/393aa359c9ad4a4bb28630fb5613f9c281cde053/node_modules/prisma/query-engine-darwin', 'debian-openssl-1.1.x': '/Users/masatotakakusaki/.cache/prisma-python/binaries/5.17.0/393aa359c9ad4a4bb28630fb5613f9c281cde053/node_modules/prisma/query-engine-debian-openssl-1.1.x'}, 'introspectionEngine': {}, 'migrationEngine': {}, 'libqueryEngine': {}, 'prismaFmt': {}})
 
 
 class Prisma(AsyncBasePrisma):
@@ -151,7 +180,7 @@ class Prisma(AsyncBasePrisma):
         return {
             'name': 'db',
             'url': OptionalValueFromEnvVar(**{'value': None, 'fromEnvVar': 'DATABASE_URL'}).resolve(),
-            'source_file_path': '/Users/masatotakakusaki/Project/Group/Tenatch/space-infinity-intern-startup-school/backend/src/prisma/schema.prisma',
+            'source_file_path': parent_path / 'schema.prisma',
         }
 
     async def execute_raw(self, query: LiteralString, *args: Any) -> int:
