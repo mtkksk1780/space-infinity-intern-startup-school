@@ -5,6 +5,7 @@ async def get_account(
 ):
     from src.server import prisma
     try:
+        await prisma.connect()
         result = await prisma.user.find_unique(where = {"id": user_id})
         return result
     except Exception as e:
