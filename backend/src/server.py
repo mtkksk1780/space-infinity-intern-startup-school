@@ -18,11 +18,11 @@ from src.routers import footer_router as footer
 from src.routers import seed_router as seed
 from src.middlewares import auth_middleware as auth
 # from src.prisma.generated.client import Prisma
-from src.prisma.generated.client import Client
+# from src.prisma.generated.client import Client
 
 load_dotenv()
 app = FastAPI()
-prisma = Client()
+# prisma = Client()
 
 # CORS settings
 origins = [
@@ -43,17 +43,17 @@ app.add_middleware(
 # async def startup():
 #     await prisma.connect()
 
-@app.on_event("startup")
-async def startup():
-    try:
-        await prisma.connect()
-        print("✅ Connected to the Prisma database")
-    except Exception as e:
-        print(f"❌ Failed to connect to the Prisma database: {e}")
+# @app.on_event("startup")
+# async def startup():
+#     try:
+#         await prisma.connect()
+#         print("✅ Connected to the Prisma database")
+#     except Exception as e:
+#         print(f"❌ Failed to connect to the Prisma database: {e}")
 
-@app.on_event("shutdown")
-async def shutdown():
-    await prisma.disconnect()
+# @app.on_event("shutdown")
+# async def shutdown():
+#     await prisma.disconnect()
 
 
 # Include routers
