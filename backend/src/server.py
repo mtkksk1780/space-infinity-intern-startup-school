@@ -50,9 +50,9 @@ async def startup():
     except Exception as e:
         print(f"❌ Failed to connect to the Prisma database: {e}")
 
-@app.on_event("shutdown")
-async def shutdown():
-    await prisma.disconnect()
+# @app.on_event("shutdown")
+# async def shutdown():
+#     await prisma.disconnect()
 
 
 # Include routers
