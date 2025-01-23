@@ -4,7 +4,8 @@ from components.utils import *
 
 def header_html():
     backend_path = get_backend_path()
-    
+    print("header.py backend_path:", backend_path)
+
     return Header(
         Head(
             Title("Home Page"),
