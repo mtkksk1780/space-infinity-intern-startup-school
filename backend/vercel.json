@@ -5,7 +5,7 @@
       "src": "api/app.py",
       "use": "@vercel/python",
       "config": {
-        "installCommand": "pip install -r requirements.txt && python3 -m pip install prisma-client-py && python3 -m prisma generate"
+        "installCommand": "pip install -r requirements.txt"
       }
     }
   ],

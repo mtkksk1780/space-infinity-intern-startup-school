@@ -17,11 +17,12 @@ from src.routers import account_router as account
 from src.routers import footer_router as footer
 from src.routers import seed_router as seed
 from src.middlewares import auth_middleware as auth
-from src.prisma.generated.client import Prisma
+# from src.prisma.generated.client import Prisma
+from src.prisma.generated.client import Client
 
 load_dotenv()
 app = FastAPI()
-prisma = Prisma()
+prisma = Client()
 
 # CORS settings
 origins = [

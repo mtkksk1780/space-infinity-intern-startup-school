@@ -3,5 +3,4 @@ uvicorn
 python-dotenv
 python-multipart
 prisma
-prisma-client-py
 pytz
