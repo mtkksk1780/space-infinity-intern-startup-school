@@ -22,7 +22,7 @@ async def get_account(user_id: str):
         return {"result": True, "account_info": account_info}
     except Exception as e:
         print("account_controller.py Error:", {e})
-        raise {"result": False, "message": "Failed to get account information.", "error": {e}}
+        return {"result": False, "message": "Failed to get account information.", "error": {e}}
 
 
 async def update_account(
