@@ -13,7 +13,7 @@ def create_project_page():
             header_html(), 
             Section(
                 Div(
-                    Img(src="/static/images/project/project.png",_class="project_img"),
+                    Img(src="/static/images/project/projectt.png",_class="project_img"),
                 ),
                 Div(
                     H1("Project Page", _class="project_titel"),

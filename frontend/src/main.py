@@ -22,6 +22,10 @@ from routes.contact import create_contact_page
 
 from routes.project import create_project_page
 
+from routes.account import create_account_page
+
+from routes.countdown import create_count_down_page
+
 
 app, rt = fast_app()
 
@@ -61,6 +65,14 @@ def contact():
 @app.route("/project")
 def project():
     return create_project_page()
+
+@app.route("/account")
+def account():
+    return create_account_page()
+
+@app.route("/countdown")
+def countdown():
+    return create_count_down_page()
 
 if __name__ == "__main__":
     import uvicorn

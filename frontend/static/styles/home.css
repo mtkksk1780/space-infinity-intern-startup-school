@@ -28,7 +28,9 @@ background: #F5C22F;
 
 }
 
+
   /* 4 Weeks */
+  /*
 .week {
 position: absolute;
 width: 264px;
@@ -84,10 +86,10 @@ color: #000000;
 
 }
 
-
-
+*/
 
 /* Welcome Section */
+/*
 .welcome-container {
   display: flex;  
   align-items: center;  
@@ -142,8 +144,9 @@ height: 332px;
 left: 240px;
 top: -950px;
 background: none;
-
+*/
 /*1st week*/
+/*
 position: absolute;
 width: 396px;
 height: 341px;
@@ -182,11 +185,11 @@ font-size: 24px;
 line-height: 110%;
 color: #000000;
 }
-
+*/
 
 
 /* 2nd week */
-
+/*
 .schedule-container div:nth-child(2) h2 {
 position: absolute;
 width: 431px;
@@ -236,8 +239,10 @@ line-height: 120%;
 color: #000000
 }
 
-
+*/
 /* 3rd week */
+
+/*
 .schedule-container div:nth-child(3) h2 {
 
 position: absolute;
@@ -288,9 +293,10 @@ line-height: 43px;
 color: #000000;
 
 }
-
+*/
 
 /* 4th week */
+/*
 .schedule-container div:nth-child(4) h2 {
 position: absolute;
 width: 431px;
@@ -344,3 +350,4 @@ color: #000000;
 
 
 }
+*/

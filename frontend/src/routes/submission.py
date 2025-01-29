@@ -39,10 +39,10 @@ def create_submission_page():
             header_html(), 
             Section(
                 Div(
-                    Img(src="/static/images/feedback/new_submissions.png", alt="back", _class="back"),
+                    Img(src="/static/images/submission/backk.png", alt="back", _class="back"),
                 ),
                 Form(
-                    H2("Week 1", _class="weeks"),
+                    #H2("Week 1", _class="weeks"),
                     P("Deadline: October 21st 11:59PM "),
                     Input(placeholder="[Project Name]", _class="project_input"),
                     Input(placeholder="[One liner]", _class="liner_input"),

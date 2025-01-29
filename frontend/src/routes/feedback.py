@@ -13,7 +13,7 @@ def create_feedback_page():
             header_html(), 
             Section(
                 Div(
-                    Img(src="/static/images/feedback/backg.png",alt="feedback",_class="feedback"),
+                    Img(src="/static/images/feedback/backk.png",alt="feedback",_class="feedback"),
                     Div(
                         Img(src="/static/images/feedback/new_submissions.png",alt="new_submissions",_class="new_submissions"),
                     ),

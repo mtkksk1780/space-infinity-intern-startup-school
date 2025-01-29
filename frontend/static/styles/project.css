@@ -2,7 +2,7 @@
   position: relative; 
   width: 100%;
   height: auto;
-  margin: 0 auto; /* 必要に応じて中央配置 */
+  margin: 0 auto; 
 }
 
 .project_img {

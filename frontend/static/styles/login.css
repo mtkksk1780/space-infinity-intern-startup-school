@@ -13,8 +13,8 @@
 position: absolute;
 width: 201px;
 height: 46px;
-left: 590px;
-top: 800px;
+left: 600px;
+top: 780px;
 
 font-family: 'Jersey 20';
 font-style: normal;
@@ -29,13 +29,11 @@ color: #BFA6A6;
 }
 
 .password{
-  /* Password */
-
 position: absolute;
 width: 107px;
 height: 26px;
-left: 590px;
-top: 935px;
+left: 600px;
+top: 930px;
 
 font-family: 'Jersey 20';
 font-style: normal;
@@ -55,8 +53,8 @@ color: #BFA6A6;
 position: absolute;
 font-family: 'Jersey 20';
 font-size: 20px;
-left: 760px;
-top: 1000px;
+left: 800px;
+top: 1035px;
 color: white;
 border: none;
 background-color: transparent;
@@ -68,8 +66,8 @@ background-color: transparent;
 position: absolute;
 width: 89px;
 height: 49px;
-left: 680px;
-top: 1049px;
+left: 700px;
+top: 1000px;
 
 font-family: 'Jersey 20';
 font-style: normal;
@@ -94,7 +92,7 @@ font-family: 'Jersey 20';
 font-size: 30px;
 width: 169px;
 height: 49px;
-left: 645px;
+left: 650px;
 top: 1112px;
 border: none;
 background: #F5BC18;

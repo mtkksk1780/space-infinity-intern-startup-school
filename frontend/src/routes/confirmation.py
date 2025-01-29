@@ -1,6 +1,6 @@
 from fasthtml.common import *
-#from components.header import header_html
-#from components.footer import footer_html
+from components.header import header_html
+from components.footer import footer_html
 
 def create_confirmation_page():
     return Html(

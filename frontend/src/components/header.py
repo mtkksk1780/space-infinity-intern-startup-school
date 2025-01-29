@@ -15,20 +15,23 @@ def header_html():
             Nav(
                 Ul(
                     Li(A("Home", href="/")),
-                    Li(A("Submission", href="/submission")),
+                    Li(A("About", href="#")),
+                    Li(A("Contact", href="/contact")),
                     Li(A("Login", href="/login")),
-                    Li(A("Sign Up", href="/signup")),
-                    Li(A("Project",href="/project")),
-                    Button("Explorer", _class="hamburger", onclick="toggleMenu()"),
+                    Button("☰", _class="hamburger", onclick="toggleMenu()"),
+
+
                     _class="main-nav"
                 )
             ),
             Div(
                 Ul(
-                    Li(A("About", href="#")),
                     Li(A("History", href="/history")),
                     Li(A("Feedback", href="/feedback")),
-                    Li(A("Contact", href="/contact")),
+                    Li(A("Submission", href="/submission")),
+                    Li(A("Project",href="/project")),
+                    Li(A("Account",href="/account")),
+                    Li(A("countdown",href="/countdown")),
                     _class="hamburger-menu"
                 ),
                 _class="hamburger-menu-container"
