@@ -4,4 +4,3 @@ python-dotenv
 python-multipart
 pytz
 asyncpg
-asyncio
