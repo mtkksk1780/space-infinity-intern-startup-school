@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS app.Message CASCADE;
 CREATE SCHEMA IF NOT EXISTS app;
 
 -- Activate extension
--- CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- Create Message table
 CREATE TABLE app.Message (
