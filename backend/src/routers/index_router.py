@@ -8,6 +8,6 @@ router = APIRouter()
 # router.get("/")(controller.index)
 
 @router.get("/")
-async def get_account(user_id: str = "a"):
+async def get_account(user_id: str = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"):
     result = await controller.get_account(user_id = user_id)
     return result

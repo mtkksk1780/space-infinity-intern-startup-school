@@ -7,9 +7,9 @@ async def get_project(project_id: str):
     try:
         # Get project information
         result = await project_service.get_project(project_id=project_id)
-        name = result.name
-        one_liner = result.oneLiner
-        utc_date = result.registerDate
+        name = result["name"]
+        one_liner = result["one_liner"]
+        utc_date = result["register_date"]
 
         # Transform the start date to Toronto date
         toronto_date = date_utils.get_toronto_date(utc_date)
@@ -19,7 +19,7 @@ async def get_project(project_id: str):
         if not result:
             active_week = 4
         else:
-            active_week = result[0].week
+            active_week = result[0]["week"]
 
         # Deadline calculation
         deadline = date_utils.get_deadline(toronto_date, active_week)

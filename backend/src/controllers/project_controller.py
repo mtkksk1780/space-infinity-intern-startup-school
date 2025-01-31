@@ -1,7 +1,7 @@
 from fastapi import HTTPException
 from src.services import project_service, submission_service
 from src.helpers.date_utils import get_toronto_date
-import uuid
+from uuid import uuid4
 
 async def register_project(
     project_name: str,
@@ -16,7 +16,7 @@ async def register_project(
 
     try:
         # Generate project_id using uuid
-        project_id = str(uuid.uuid4())
+        project_id = str(uuid4())
 
         # Register project information to the Project table
         result_project = await project_service.register_project(
@@ -51,7 +51,7 @@ async def get_latest_project(user_id: str):
         # Get project information
         result = await project_service.get_latest_project(user_id=user_id)
         # Extract project_id
-        project_id = result.id
+        project_id = result["id"]
         print("project_controller.py get_latest_project project_id:", project_id)
         return project_id
     except Exception as e:

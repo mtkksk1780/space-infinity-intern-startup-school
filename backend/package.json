@@ -2,16 +2,10 @@
   "name": "space-infinity-intern-startup-school-backend",
   "version": "1.0.0",
   "description": "space-infinity-intern-startup-school-backend",
-  "main": "api/main.py",
+  "main": "api/app.py",
   "scripts": {
     "build": "python3 -m pip install -r requirements.txt"
   },
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "prisma": "^5.17.0"
-  },
-  "dependencies": {
-    "@prisma/client": "^5.17.0"
-  }
+  "license": "ISC"
 }
