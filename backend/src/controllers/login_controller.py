@@ -18,9 +18,9 @@ async def login(
             return JSONResponse(content={"result": False, "message": "The email or password is incorrect."})
         
         # Set user data in cookies
-        user_id = result.id
-        role = result.role
-        user_name = result.name
+        user_id = result['id']
+        role = result['role']
+        user_name = result['name']
         session_id = auth.set_user_cookie(response=response, user_id=user_id, role=role, user_name=user_name)
 
         print("login_controller.py session_id:", session_id)

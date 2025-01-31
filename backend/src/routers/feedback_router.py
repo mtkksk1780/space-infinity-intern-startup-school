@@ -29,7 +29,7 @@ async def register_feedback(
         evaluation_rate = evaluation_rate,
         evaluation_comment = evaluation_comment,
         submission_id = submission_id,
-        user_id = "c", # tentative (Need to get user_id from cookie)
+        user_id = "cccccccc-cccc-cccc-cccc-cccccccccccc", # tentative (Need to get user_id from cookie)
         is_anonymous = is_anonymous,
     )
     print("feedback_router.py result:", is_registered)

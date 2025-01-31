@@ -1,4 +1,8 @@
+import os
+import asyncpg
 from fastapi import HTTPException
+
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 async def register_feedback(
     evaluation_rate: int,
@@ -7,16 +11,22 @@ async def register_feedback(
     user_id: str,
     is_anonymous: bool,
 ):
-    from src.server import prisma
     try:
-        result = await prisma.feedback.create(data={
-            "evaluationRate": evaluation_rate,
-            "evaluationComment": evaluation_comment,
-            "submissionId": submission_id,
-            "userId": user_id,
-            "isAnonymous": is_anonymous
-        })
-        return result
+        conn = await asyncpg.connect(DATABASE_URL)
+        
+        query = """
+            INSERT INTO app.feedback (evaluation_rate, evaluation_comment, submission_id, user_id, is_anonymous)
+            VALUES ($1, $2, $3, $4, $5) RETURNING *;
+        """
+        result = await conn.fetchrow(query, evaluation_rate, evaluation_comment, submission_id, user_id, is_anonymous)
+        
+        await conn.close()
+
+        if result:
+            return dict(result)
+
+        raise HTTPException(status_code=500, detail="Error registering feedback (Service)")
+
     except Exception as e:
-        print({e})
+        print(f"Error in register_feedback: {e}")
         raise HTTPException(status_code=500, detail="Error registering feedback (Service)")

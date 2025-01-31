@@ -6,11 +6,11 @@ async def get_history(project_id: str):
         # Get project information
         result = await project_service.get_project(project_id = project_id)
 
-        # Extract necessary information
+        # Ensure 'oneLiner' exists in the result, otherwise provide a default value
         project_info = {
-            "name": result.name,
-            "one_liner": result.oneLiner,
-            "description": result.description,
+            "name": result["name"],
+            "one_liner": result["one_liner"],
+            "description": result["description"],
         }
 
         # Get submission history
@@ -19,20 +19,18 @@ async def get_history(project_id: str):
         # Extract necessary information
         submission_history = []
         for submission in result:
-            print(f"Processing Submission: {submission}")
+            print("history_controller.py submission:", submission)
             feedback_list = []
-            for feedback in submission.Feedback:
-                user_name = feedback.User.name if feedback.User and feedback.User.name else None
-                feedback_list.append({
-                    "user_name": user_name,
-                    "evaluation_rate": feedback.evaluationRate,
-                    "evaluation_comment": feedback.evaluationComment,
-                    "is_anonymous": feedback.isAnonymous,
-                })
+            feedback_list.append({
+                "user_name": submission["name"],
+                "evaluation_rate": submission["evaluation_rate"],
+                "evaluation_comment": submission["evaluation_comment"],
+                "is_anonymous": submission["is_anonymous"],
+            })
             submission_history.append({
-                "week": submission.week,
-                "progress_comment": submission.progressComment,
-                "output_url": submission.outputUrl,
+                "week": submission["week"],
+                "progress_comment": submission["progress_comment"],
+                "output_url": submission["output_url"],
                 "feedback": feedback_list
             })
 
@@ -44,5 +42,5 @@ async def get_history(project_id: str):
         print("history_controller.py data:", data)
         return data
     except Exception as e:
-        print("history_controller.py Error:", {e})
+        print("history_controller.py Error:", e) 
         raise HTTPException(status_code=500, detail="Error fetching progress history (Controller)")

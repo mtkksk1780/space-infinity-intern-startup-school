@@ -7,12 +7,13 @@ from src.services import submission_service
 async def get_active_submissions():
     try:
         result = await submission_service.get_active_submissions()
+        print("feedback_controller.py result:", result)
 
         # Extract only project information
         applicable_projects = []
         for submission in result:
             applicable_projects.append({
-                "submission_id": submission.id,
+                "submission_id": submission["id"],
                 "project_name": submission.Project.name,
                 "user_name": submission.Project.User.name,
             })

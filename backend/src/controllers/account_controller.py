@@ -13,9 +13,9 @@ async def get_account(user_id: str):
 
         # Extract necessary information
         account_info = {
-            "name": result.name,
-            "email": result.email,
-            "password": result.password,
+            "name": result['name'],
+            "email": result['email'],
+            "password": result['password'],
         }
 
         print("account_controller.py account_info:", account_info)

@@ -1,22 +1,24 @@
+import os
+import asyncpg
 from fastapi import HTTPException
-# from src.prisma.generated.client import Client
-# from src.prisma.generated.client import Prisma
-from src.prisma.generated.client import *
+
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 async def get_account(
     user_id: str
 ):
-    # from src.server import prisma
-    # prisma = Client()
-    prisma = Prisma()
+    conn = await asyncpg.connect(DATABASE_URL)
     try:
-        await prisma.connect()
-        result = await prisma.user.find_unique(where = {"id": user_id})
-        await prisma.disconnect()
-        return result
+        query = "SELECT * FROM app.user WHERE id = $1"
+        result = await conn.fetchrow(query, user_id)
+        if result is None:
+            raise HTTPException(status_code = 404, detail = "User not found")
+        return dict(result)
     except Exception as e:
         print({e})
         raise HTTPException(status_code = 500, detail = "Error fetching account (Service)")
+    finally:
+        await conn.close()
 
 
 async def update_account(
@@ -25,7 +27,6 @@ async def update_account(
     password: str,
     user_id: int
 ):
-    from src.server import prisma
     try:
         result = await prisma.user.update(
             data = {
