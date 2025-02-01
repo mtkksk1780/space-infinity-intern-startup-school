@@ -12,12 +12,12 @@ CREATE SCHEMA IF NOT EXISTS app;
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- Create Message table
-CREATE TABLE app.Message (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  text TEXT NOT NULL,
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
+-- CREATE TABLE app.Message (
+--   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+--   text TEXT NOT NULL,
+--   created_at TIMESTAMP DEFAULT NOW(),
+--   updated_at TIMESTAMP DEFAULT NOW()
+-- );
 
 -- Create User table
 CREATE TABLE app.User (

@@ -57,7 +57,7 @@ def create_history_page(project_id: str):
             header_html(),
             Section(
                 Div(
-                    Img(src="/static/images/history/history.png", alt="history", _class="history"),
+                    Img(src="/static/images/history/historyy.png", alt="history", _class="history"),
                     Img(src="/static/images/history/box.png", alt="box",_class="box"),
                     Div(
                         H3("Your project",_class="your_project"),
