@@ -1,0 +1,140 @@
+　.project_section {
+  position: relative; 
+  width: 100%;
+  height: auto;
+  margin: 0 auto; 
+}
+
+.account_img {
+  width: 100%;
+  height: auto;
+}
+
+.project_titel{
+/* Your account information */
+
+position: absolute;
+width: 514px;
+height: 70px;
+left: 500px;
+top: 287px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 40px;
+
+color: #FFFFFF;
+}
+
+.name{
+  /* Name */
+
+position: absolute;
+width: 217px;
+height: 76px;
+left: 450px;
+top: 370px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 40px;
+
+color: #FFFFFF;
+
+
+}
+.input_name{
+/* Rectangle 71 */
+
+position: absolute;
+width: 587px;
+height: 94px;
+left: 440px;
+top: 450px;
+
+background: #FFFFFF;
+}
+
+.email{
+  /* Email Address */
+
+position: absolute;
+width: 217px;
+height: 76px;
+left: 450px;
+top: 553px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 40px;
+
+color: #FFFFFF;
+
+
+}
+
+.input_email{
+  /* Rectangle 68 */
+
+position: absolute;
+width: 587px;
+height: 94px;
+left: 440px;
+top: 640px;
+
+background: #FFFFFF;
+
+}
+
+
+.password{
+  /* Password */
+
+position: absolute;
+width: 281px;
+height: 76px;
+left: 450px;
+top: 763px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 40px;
+
+color: #FFFFFF;
+
+
+}
+
+.input_password{/* Rectangle 70 */
+
+position: absolute;
+width: 587px;
+height: 94px;
+left: 440px;
+top: 850px;
+
+background: #FFFFFF;
+}
+
+
+.update{
+
+position: absolute;
+width: 150px;
+height: 61px;
+left: 600px;
+top: 1059px;
+font-family: 'Jersey 20';
+font-style: normal;
+font-size: 50px;
+background: #F5BC18;
+border: none;
+}

@@ -19,7 +19,7 @@ def create_project_page():
                 Form(
                     get_form_attributes("/project"),
                     Div(
-                        Img(src="/static/images/project/project.png", _class="project_img"),
+                        Img(src="/static/images/project/projectt.png", _class="project_img"),
                     ),
                     Div(
                         H1("Project Page", _class="project_title"),

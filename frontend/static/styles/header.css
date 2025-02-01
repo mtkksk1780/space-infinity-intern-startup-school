@@ -56,7 +56,7 @@
 .hamburger-menu-container {
   display: none; 
   position: absolute;
-  top: 60px;  /* below the header */
+  top: 190px;  /* below the header */
   right: 30px;  /* right */
   background-color: white;
   border: 1px solid #ddd;

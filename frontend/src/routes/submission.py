@@ -29,7 +29,7 @@ def create_submission_page(project_id: str):
             header_html(),
             Section(
                 Div(
-                    Img(src="/static/images/feedback/new_submissions.png", alt="back", _class="back"),
+                    Img(src="/static/images/submission/backk.png", alt="back", _class="back"),
                 ),
                 Form(
                     get_form_attributes("/submission/complete/" + project_id),
