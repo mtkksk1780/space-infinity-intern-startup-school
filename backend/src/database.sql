@@ -1,6 +1,9 @@
 -- Drop schema
 DROP SCHEMA IF EXISTS app CASCADE;
 
+-- Truncate tables
+-- TRUNCATE TABLE app.Feedback, app.Submission, app.Project, app.User CASCADE;
+
 -- Drop tables
 -- DROP TABLE IF EXISTS app.Feedback CASCADE;
 -- DROP TABLE IF EXISTS app.Submission CASCADE;
