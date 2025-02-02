@@ -1,23 +1,17 @@
--- Drop tables if they exist in the correct order
-DROP TABLE IF EXISTS app.Feedback CASCADE;
-DROP TABLE IF EXISTS app.Submission CASCADE;
-DROP TABLE IF EXISTS app.Project CASCADE;
-DROP TABLE IF EXISTS app.User CASCADE;
-DROP TABLE IF EXISTS app.Message CASCADE;
+-- Drop schema
+DROP SCHEMA IF EXISTS app CASCADE;
+
+-- Drop tables
+-- DROP TABLE IF EXISTS app.Feedback CASCADE;
+-- DROP TABLE IF EXISTS app.Submission CASCADE;
+-- DROP TABLE IF EXISTS app.Project CASCADE;
+-- DROP TABLE IF EXISTS app.User CASCADE;
 
 -- Create schema
 CREATE SCHEMA IF NOT EXISTS app;
 
 -- Activate extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-
--- Create Message table
--- CREATE TABLE app.Message (
---   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
---   text TEXT NOT NULL,
---   created_at TIMESTAMP DEFAULT NOW(),
---   updated_at TIMESTAMP DEFAULT NOW()
--- );
 
 -- Create User table
 CREATE TABLE app.User (
