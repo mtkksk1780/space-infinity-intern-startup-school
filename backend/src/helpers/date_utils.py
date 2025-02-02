@@ -20,7 +20,6 @@ def get_week_number(date: datetime) -> int:
     return week_number
 
 # Transform UTC to Toronto timezone
-# Note: Need to think of data type for utc_date
 def get_toronto_date(utc_date: datetime) -> datetime:
     # Set the Toronto timezone
     toronto = pytz.timezone('America/Toronto')
@@ -50,22 +49,30 @@ def format_date(date: datetime) -> str:
     # Format the date as 'December 31st 11:59PM'
     return f"{month} {day}{suffix} {time}"
 
-def format_time_diff(date: datetime) -> str:
+def get_countdown(date: datetime) -> str:
     # Get the time difference in seconds
     time_diff = (get_current_date() - date).total_seconds()
 
-    # Calculate the days
-    days = time_diff // (24 * 3600)
-    time_diff = time_diff % (24 * 3600)
+    countdown_days = 7
+    countdown_seconds = 24 * 3600 * countdown_days
 
-    # Calculate the hours
-    hours = time_diff // 3600
-    time_diff %= 3600
+    countdown = countdown_seconds - time_diff
 
-    # Calculate the minutes
-    minutes = time_diff // 60
+    if countdown <= 0:
+        return "0DAYS 00:00"
 
-    # Format the time difference as '2DAYS 23:59'
+    # Calculate countdown days
+    days = countdown // (24 * 3600)
+    countdown = countdown % (24 * 3600)
+
+    # Calculate countdown hours
+    hours = countdown // 3600
+    countdown %= 3600
+
+    # Calculate countdown minutes
+    minutes = countdown // 60
+
+    # Format the countdown as '2DAYS 23:59'
     formatted_time_diff = f"{int(days)}DAYS {int(hours):02}:{int(minutes):02}"
 
     return formatted_time_diff

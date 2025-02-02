@@ -10,7 +10,7 @@ from src.routers import project_router as project
 from src.routers import submission_router as submission
 from src.routers import feedback_router as feedback
 from src.routers import history_router as history
-# from src.routers import countdown_router as countdown
+from src.routers import countdown_router as countdown
 from src.routers import login_router as login
 from src.routers import signup_router as signup
 from src.routers import account_router as account
@@ -42,7 +42,7 @@ app.include_router(project.router)
 app.include_router(submission.router)
 app.include_router(feedback.router)
 app.include_router(history.router)
-# app.include_router(countdown.router)
+app.include_router(countdown.router)
 app.include_router(login.router)
 app.include_router(signup.router)
 app.include_router(account.router)
