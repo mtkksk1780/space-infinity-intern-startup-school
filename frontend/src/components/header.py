@@ -90,7 +90,7 @@ def header_html():
                         $('#feedback_link').attr('href', '/feedback');
                     })
                     .catch(error => console.error("Error fetching project id:", error));
-                }, 300);
+                }, 1000);
             });
         '''),
     )
