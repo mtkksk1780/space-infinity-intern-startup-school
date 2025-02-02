@@ -54,7 +54,8 @@ def header_html():
         add_jquery(),
         Script('''
             // Get user id from the hidden input field
-            $(document).ready(function() {
+            $(window).on('load', function() {
+            // $(document).ready(function() {
                 setTimeout(() => {
                     const user_id = $('#user_id').val();
                     console.log('header.py user_id:', user_id);
