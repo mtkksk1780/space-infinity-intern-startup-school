@@ -2,14 +2,15 @@ import os
 import uvicorn
 import asyncpg
 import asyncio
+from dotenv import load_dotenv
 from src.server import app
+
+# Load environment variables
+load_dotenv()
 
 async def execute_sql_file():
     db_url = os.getenv("DATABASE_URL")
-    # sql_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../src/database.sql'))
-    # print("sql_file_path1:", sql_file_path)
     sql_file_path = os.path.abspath(os.path.join(os.getcwd(), "src/database.sql"))
-    # print("sql_file_path2:", sql_file_path)
 
     try:
         conn = await asyncpg.connect(db_url)

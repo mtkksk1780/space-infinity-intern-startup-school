@@ -55,7 +55,6 @@ def get_countdown(date: datetime) -> str:
 
     countdown_days = 7
     countdown_seconds = 24 * 3600 * countdown_days
-
     countdown = countdown_seconds - time_diff
 
     if countdown <= 0:

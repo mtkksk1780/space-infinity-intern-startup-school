@@ -1,6 +1,5 @@
 import sys
 import os
-from dotenv import load_dotenv
 from pathlib import Path
 from fastapi import FastAPI, Request, Response, HTTPException, Depends, Form
 from fastapi.responses import JSONResponse
@@ -14,10 +13,8 @@ from src.routers import countdown_router as countdown
 from src.routers import login_router as login
 from src.routers import signup_router as signup
 from src.routers import account_router as account
-# from src.routers import footer_router as footer
 from src.middlewares import auth_middleware as auth
 
-load_dotenv()
 app = FastAPI()
 
 # CORS settings
@@ -35,7 +32,6 @@ app.add_middleware(
     allow_headers = ["*"],
 )
 
-
 # Include routers
 app.include_router(index.router)
 app.include_router(project.router)
@@ -46,5 +42,4 @@ app.include_router(countdown.router)
 app.include_router(login.router)
 app.include_router(signup.router)
 app.include_router(account.router)
-# app.include_router(footer.router)
 app.include_router(auth.router)

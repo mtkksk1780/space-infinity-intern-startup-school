@@ -27,16 +27,18 @@ async def update_account(
     password: str,
     user_id: int
 ):
+    conn = await asyncpg.connect(DATABASE_URL)
     try:
-        result = await prisma.user.update(
-            data = {
-                "email": email,
-                "password": password,
-                "name": user_name,
-            },
-            where = {"id": user_id}
-        )
-        return result
+        query = """
+            UPDATE app.user
+            SET email = $1, name = $2, password = $3
+            WHERE id = $4
+            RETURNING id, email, name;
+        """
+        result = await conn.fetchrow(query, email, user_name, password, user_id)
+        return dict(result)
     except Exception as e:
-        print({e})
-        raise HTTPException(status_code = 500, detail = "Error updating user account (Service)")
+        print({"error": str(e)})
+        raise HTTPException(status_code=500, detail="Error updating user account (Service)")
+    finally:
+        await conn.close()

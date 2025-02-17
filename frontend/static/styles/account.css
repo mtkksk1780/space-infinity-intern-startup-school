@@ -125,13 +125,45 @@ background: #FFFFFF;
 }
 
 
-.update{
+.confirm_password{
+  /* Password */
 
 position: absolute;
-width: 150px;
+width: 281px;
+height: 76px;
+left: 450px;
+top: 970px;
+
+font-family: 'Jersey 20';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 40px;
+
+color: #FFFFFF;
+
+
+}
+
+.input_confirm_password{/* Rectangle 70 */
+
+position: absolute;
+width: 587px;
+height: 94px;
+left: 440px;
+top: 1060px;
+
+background: #FFFFFF;
+}
+
+
+.submit{
+
+position: absolute;
+width: 180px;
 height: 61px;
 left: 600px;
-top: 1059px;
+top: 1220px;
 font-family: 'Jersey 20';
 font-style: normal;
 font-size: 50px;

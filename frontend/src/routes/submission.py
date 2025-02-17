@@ -49,7 +49,7 @@ def create_submission_page(project_id: str):
             ),
             add_sweet_alert(),
             footer_html(),
-            confirm_form(),
+            confirm_form("SUBMIT"),
             back_form(),
             submit_form("/submission", "None"),
         ),

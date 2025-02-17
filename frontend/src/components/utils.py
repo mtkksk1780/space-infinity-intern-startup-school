@@ -102,7 +102,7 @@ def add_sweet_alert():
     return Script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
 
 # Confirm form
-def confirm_form():
+def confirm_form(button_text: str):
     return Script(f"""
         $(document).on('click', '.confirm-btn', async function(event) {{
             event.preventDefault();
@@ -136,7 +136,7 @@ def confirm_form():
                     // Change the class name from confirm-btn to submit-btn
                     $(this).removeClass('confirm-btn').addClass('submit-btn');
                     // Change the button text from CONFIRM to SUBMIT
-                    $('.submit-btn').text('SUBMIT');
+                    $('.submit-btn').text('{button_text}');
                     // Add "BACK" button in the form section
                     $('.input_section').append('<button class="submit-tentative back-btn">BACK</button>');
                 }}

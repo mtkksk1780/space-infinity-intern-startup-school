@@ -15,14 +15,14 @@ async def get_account(user_id: str):
 async def update_account(
     email: str = Form(...),
     first_name: str = Form(...),
-    update_password: str = Form(...),
+    password: str = Form(...),
     confirm_password: str = Form(...),
     user_id: str = Form(...)
 ):
     result =  await controller.update_account(
         email = email,
         user_name = first_name,
-        update_password = update_password,
+        update_password = password,
         confirm_password = confirm_password,
         user_id = user_id
     )
