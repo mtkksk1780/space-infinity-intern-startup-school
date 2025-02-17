@@ -35,7 +35,7 @@ def header_html():
                     Li(A("Feedback", href="/login", _id="feedback_link")),
                     Li(A("Submission", href="/login", _id="submission_link")),
                     Li(A("Project", href="/login", _id="project_link")),
-                    Li(A("Account",href="/account")),
+                    Li(A("Account",href="/login", _id="account_link")),
                     Li(A("countdown",href="/countdown")),
                     _class="hamburger-menu"
                 ),
@@ -55,7 +55,6 @@ def header_html():
         Script('''
             // Get user id from the hidden input field
             $(window).on('load', function() {
-            // $(document).ready(function() {
                 setTimeout(() => {
                     const user_id = $('#user_id').val();
                     console.log('header.py user_id:', user_id);
@@ -68,6 +67,7 @@ def header_html():
                     // Update links [1]
                     $('#project_link').attr('href', '/project');
                     $('#submission_link').attr('href', '/project');
+                    $('#account_link').attr('href', '/account/' + user_id);
 
                     // Fetch the user's latest project id from the server
                     fetch(backend_path + '/project/' + user_id, {

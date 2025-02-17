@@ -1,5 +1,6 @@
 from fastapi import HTTPException
 from src.services import account_service as service
+from src.helpers import validation_utils
 
 
 async def get_account(user_id: str):

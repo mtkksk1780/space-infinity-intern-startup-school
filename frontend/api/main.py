@@ -53,9 +53,9 @@ def contact():
 def project():
     return create_project_page()
 
-@app.route("/account")
-def account():
-    return create_account_page()
+@app.route("/account/{user_id}")
+def account(user_id: str):
+    return create_account_page(user_id = user_id)
 
 @app.route("/countdown")
 def countdown():

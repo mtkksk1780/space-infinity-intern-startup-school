@@ -42,7 +42,7 @@ def create_project_page():
             ),
             add_sweet_alert(),
             footer_html(),
-            confirm_form(),
+            confirm_form("SUBMIT"),
             back_form(),
             submit_form("/project", "/"),
         ),
