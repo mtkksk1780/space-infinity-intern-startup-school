@@ -48,6 +48,7 @@ def create_account_page(user_id: str):
                     ),
                     Div(
                         Button("CONFIRM", _class="submit confirm-btn"),
+                        Button("UPDATE", _class="submit disabled submit-btn"),
                     ),
 
                     _class="project_section form_section"
@@ -55,7 +56,8 @@ def create_account_page(user_id: str):
             ),
             add_sweet_alert(),
             footer_html(),
-            confirm_form("UPDATE"),
+            disable_button(),
+            confirm_form(),
             back_form(),
             submit_form("/account", "None"),
         ),

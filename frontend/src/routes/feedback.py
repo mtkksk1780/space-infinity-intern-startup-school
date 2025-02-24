@@ -67,14 +67,16 @@ def create_feedback_page():
                         Input(placeholder="", _class="coment-field"),
                     ),
                     Div(
-                        Button("SUBMIT", _class="submit_btn"),
+                        Button("CONFIRM", _class="submit confirm-btn"),
+                        Button("SUBMIT", _class="submit disabled submit-btn"),
                     ),
                     _class="feedbuck_section"
                 ),
             ),
             add_sweet_alert(),
             footer_html(),
-            confirm_form("SUBMIT"),
+            disable_button(),
+            confirm_form(),
             back_form(),
             submit_form("/feedback", "None"),
             Script(f'''

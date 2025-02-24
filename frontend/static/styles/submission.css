@@ -155,7 +155,7 @@
  
  .submit{
    /* SUBMIT */
- position: absolute;
+ position: relative;
  width: 120px;
  height: 42px;
  left: 564px;
