@@ -204,8 +204,8 @@ border: none;
 
 }
 
-.submit_btn{
-  position: absolute;
+.submit {
+  position: relative;
   width: 296px;
   height: 62px;
   left: 523px;

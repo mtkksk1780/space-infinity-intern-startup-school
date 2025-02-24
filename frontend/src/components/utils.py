@@ -101,8 +101,16 @@ def add_jquery():
 def add_sweet_alert():
     return Script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
 
+# Disable button
+def disable_button():
+    return Script("""
+        $(window).on('load', function() {
+            $('.disabled').prop('disabled', true);
+        });
+    """)
+
 # Confirm form
-def confirm_form(button_text: str):
+def confirm_form():
     return Script(f"""
         $(document).on('click', '.confirm-btn', async function(event) {{
             event.preventDefault();
@@ -133,12 +141,10 @@ def confirm_form(button_text: str):
             }}).then((result) => {{
                 const isConfirmed = result.isConfirmed;
                 if (isConfirmed) {{
-                    // Change the class name from confirm-btn to submit-btn
-                    $(this).removeClass('confirm-btn').addClass('submit-btn');
-                    // Change the button text from CONFIRM to SUBMIT
-                    $('.submit-btn').text('{button_text}');
-                    // Add "BACK" button in the form section
-                    $('.input_section').append('<button class="submit-tentative back-btn">BACK</button>');
+                    // Change the class name from confirm-btn to back-btn
+                    $(this).removeClass('confirm-btn').addClass('back-btn').text('BACK');
+                    // Enable SUBMIT/UPDATE button
+                    $('.disabled').prop('disabled', false);
                 }}
             }});
         }});
@@ -149,12 +155,10 @@ def back_form():
     return Script("""
         $(document).on('click', '.back-btn', function(event) {{
             event.preventDefault();
-            // Delete BACK button
-            $('.back-btn').remove();
-            // Change the class name from submit-btn to confirm-btn
-            $('.submit-btn').removeClass('submit-btn').addClass('confirm-btn');
-            // Change the button text from SUBMIT to CONFIRM
-            $('.confirm-btn').text('CONFIRM');
+            // Change the class name from back-btn to confirm-btn
+            $(this).removeClass('back-btn').addClass('confirm-btn').text('CONFIRM');
+            // Disable SUBMIT/UPDATE button
+            $('.disabled').prop('disabled', true);
         }});
     """)
 
@@ -172,12 +176,10 @@ def submit_form(source_path: str, redirect_path: str):
                     const session_id = data.session_id;
                     document.cookie = `session_id=${{session_id}}`;
                 }} else {{
-                    // Delete BACK button
-                    $('.back-btn').remove();
                     // Change the class name from submit-btn to confirm-btn
-                    $('.submit-btn').removeClass('submit-btn').addClass('confirm-btn');
-                    // Change the button text from SUBMIT to CONFIRM
-                    $('.confirm-btn').text('CONFIRM'); 
+                    $('.back-btn').addClass('confirm-btn').removeClass('back-btn').text('CONFIRM');
+                    // Disable SUBMIT/UPDATE button
+                    $('.disabled').prop('disabled', true);
                 }}
                 // Redirect to the source page
                 if (result.isConfirmed && redirectPath) {{

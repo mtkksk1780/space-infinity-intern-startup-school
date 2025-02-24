@@ -159,7 +159,7 @@ background: #FFFFFF;
 
 .submit{
 
-position: absolute;
+position: relative;
 width: 180px;
 height: 61px;
 left: 600px;

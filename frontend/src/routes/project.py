@@ -35,6 +35,7 @@ def create_project_page():
                     ),
                     Div(
                         Button("CONFIRM", _class="submit confirm-btn"),
+                        Button("SUBMIT", _class="submit disabled submit-btn"),
                     ),
                     
                     _class="project_section form_section"
@@ -42,7 +43,8 @@ def create_project_page():
             ),
             add_sweet_alert(),
             footer_html(),
-            confirm_form("SUBMIT"),
+            disable_button(),
+            confirm_form(),
             back_form(),
             submit_form("/project", "/"),
         ),

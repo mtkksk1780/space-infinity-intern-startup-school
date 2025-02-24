@@ -73,7 +73,7 @@ outline: none;
 }
 
 .submit{
-position: absolute;
+position: relative;
 font-family: 'Jersey 20';
 font-style: normal;
 width: 227px;

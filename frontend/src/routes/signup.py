@@ -30,13 +30,15 @@ def create_signup_page():
                     ),
                     Div(
                         Button("CONFIRM", _class="submit confirm-btn"),
+                        Button("SUBMIT", _class="submit disabled submit-btn"),
                     ),
                     _class="signup_section form_section"
                 ),
             ),
             add_sweet_alert(),
             footer_html(),
-            confirm_form("SUBMIT"),
+            disable_button(),
+            confirm_form(),
             back_form(),
             submit_form("/signup", "/login"),
         ),
