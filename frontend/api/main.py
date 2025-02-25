@@ -49,9 +49,9 @@ def signup():
 def contact():
     return create_contact_page()
 
-@app.route("/project")
-def project():
-    return create_project_page()
+@app.route("/project/{project_id}")
+def project(project_id: str):
+    return create_project_page(project_id = project_id)
 
 @app.route("/account/{user_id}")
 def account(user_id: str):

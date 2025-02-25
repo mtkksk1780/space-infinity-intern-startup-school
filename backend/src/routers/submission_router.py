@@ -10,6 +10,14 @@ async def get_project(project_id: str):
     result = await controller.get_project(project_id = project_id)
     return result
 
+
+# Get an applicable project's target week status
+@router.post("/submission/status/{project_id}/{week}")
+async def get_active_submission(project_id: str, week: int):
+    result = await controller.get_submission_status(project_id = project_id, week = week)
+    return result
+
+
 # Update submission records when submitting progress
 @router.post("/submission/complete/{project_id}")
 async def register_progress_complete(
@@ -39,7 +47,7 @@ async def register_progress_incomplete(
     project_id: str,
 ):
     submission_status = "Incomplete"
-    is_registered =  await controller.register_progress(
+    result =  await controller.register_progress(
         project_id = project_id,
         progress_score = 0,
         progress_comment = "None",

@@ -15,7 +15,7 @@ def get_week_number(date: datetime) -> int:
         date = pytz.utc.localize(date)
 
     # Calculate the week number
-    week_number = (current_date -date).days // 7 + 1
+    week_number = (current_date - date).days // 7 + 1
 
     return week_number
 
@@ -49,16 +49,19 @@ def format_date(date: datetime) -> str:
     # Format the date as 'December 31st 11:59PM'
     return f"{month} {day}{suffix} {time}"
 
-def get_countdown(date: datetime) -> str:
+def get_countdown(date: datetime, week: int) -> str:
     # Get the time difference in seconds
     time_diff = (get_current_date() - date).total_seconds()
 
-    countdown_days = 7
+    if week >= 5:
+        return "0DAYS 00:00:00"
+
+    countdown_days = 7 * week
     countdown_seconds = 24 * 3600 * countdown_days
     countdown = countdown_seconds - time_diff
 
     if countdown <= 0:
-        return "0DAYS 00:00"
+        return "0DAYS 00:00:00"
 
     # Calculate countdown days
     days = countdown // (24 * 3600)
@@ -71,8 +74,11 @@ def get_countdown(date: datetime) -> str:
     # Calculate countdown minutes
     minutes = countdown // 60
 
+    # Calculate countdown seconds
+    seconds = countdown % 60
+
     # Format the countdown as '2DAYS 23:59'
-    formatted_time_diff = f"{int(days)}DAYS {int(hours):02}:{int(minutes):02}"
+    formatted_time_diff = f"{int(days)}DAYS {int(hours):02}:{int(minutes):02}:{int(seconds):02}"
 
     return formatted_time_diff
     

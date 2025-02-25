@@ -110,10 +110,22 @@ def disable_button():
     """)
 
 # Confirm form
-def confirm_form():
+def confirm_form(project_id: str):
+
     return Script(f"""
         $(document).on('click', '.confirm-btn', async function(event) {{
             event.preventDefault();
+
+            const projectId = '{project_id}';
+            console.log("projectId:", projectId);
+
+            // Update button functions
+            function updateButtons() {{
+                // Change the class name from confirm-btn to back-btn
+                $('.confirm-btn').removeClass('confirm-btn').addClass('back-btn').text('BACK');
+                // Enable SUBMIT/UPDATE button
+                $('.disabled').prop('disabled', false);
+            }}
 
             // Check if all fields are filled
             let allFieldsFilled = true;
@@ -139,12 +151,25 @@ def confirm_form():
                 confirmButtonText: "Confirm",
                 cancelButtonText: "Back",
             }}).then((result) => {{
-                const isConfirmed = result.isConfirmed;
+                let isConfirmed = result.isConfirmed;
                 if (isConfirmed) {{
-                    // Change the class name from confirm-btn to back-btn
-                    $(this).removeClass('confirm-btn').addClass('back-btn').text('BACK');
-                    // Enable SUBMIT/UPDATE button
-                    $('.disabled').prop('disabled', false);
+                    // If old project id exists, confirm the update
+                    if (projectId && projectId !== '' && projectId !== 'None') {{
+                        Swal.fire({{
+                            title: "There is an existing project.<br>Is it okay to update it?",
+                            icon: "warning",
+                            showCancelButton: true,
+                            confirmButtonText: "Yes",
+                            cancelButtonText: "No",
+                        }}).then((result) => {{
+                            isConfirmed = result.isConfirmed;
+                            if (isConfirmed) {{
+                                updateButtons();
+                            }}
+                        }});
+                    }} else {{
+                        updateButtons();
+                    }}
                 }}
             }});
         }});

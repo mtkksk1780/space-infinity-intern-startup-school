@@ -76,7 +76,7 @@ def create_feedback_page():
             add_sweet_alert(),
             footer_html(),
             disable_button(),
-            confirm_form(),
+            confirm_form("None"),
             back_form(),
             submit_form("/feedback", "None"),
             Script(f'''
