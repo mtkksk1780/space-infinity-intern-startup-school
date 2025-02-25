@@ -3,7 +3,10 @@ from components.header import header_html
 from components.footer import footer_html
 from components.utils import *
 
-def create_project_page():
+def create_project_page(project_id: str):
+
+    print("create_project_page project_id:", project_id)
+
     return Html(
         Head(
             Title("Project Page"),
@@ -44,7 +47,7 @@ def create_project_page():
             add_sweet_alert(),
             footer_html(),
             disable_button(),
-            confirm_form(),
+            confirm_form(project_id),
             back_form(),
             submit_form("/project", "/"),
         ),

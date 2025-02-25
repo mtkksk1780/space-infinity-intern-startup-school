@@ -40,6 +40,14 @@ async def get_project(project_id: str):
         print("submission_controller.py Error:", {e})
         raise HTTPException(status_code=500, detail="Error fetching project information (Controller)")
 
+async def get_submission_status(project_id: str, week: int):
+    try:
+        result = await submission_service.get_submission_status(project_id=project_id, week=week)
+        print("submission_controller.py get_submission_status result:", result)
+        return result
+    except Exception as e:
+        print("submission_controller.py Error:", {e})
+        raise HTTPException(status_code=500, detail="Error fetching submission status (Controller)")
 
 async def register_progress(
     project_id: str,
@@ -48,9 +56,11 @@ async def register_progress(
     upload_link: str,
     submission_status: str,
 ):
+
     # Validation check
-    if not progress_score or not progress_comment or not upload_link:
-        return {"result": False, "message": "Please fill in all fields."}
+    if submission_status == "Reviewing":
+        if not progress_score or not progress_comment or not upload_link:
+            return {"result": False, "message": "Please fill in all fields."}
 
     try:
         # Update the submission record with the given projectId and active week

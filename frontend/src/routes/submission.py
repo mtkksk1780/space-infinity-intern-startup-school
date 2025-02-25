@@ -51,7 +51,7 @@ def create_submission_page(project_id: str):
             add_sweet_alert(),
             footer_html(),
             disable_button(),
-            confirm_form(),
+            confirm_form("None"),
             back_form(),
             submit_form("/submission", "None"),
         ),

@@ -32,6 +32,24 @@ async def create_submission_template(project_id: str):
         await conn.close()
 
 
+# Get submission status
+async def get_submission_status(project_id: str, week: int):
+    conn = await asyncpg.connect(DATABASE_URL)
+    try:
+        query = """
+            SELECT submission_status FROM app.submission
+            WHERE project_id = $1 AND week = $2
+        """
+        result = await conn.fetchrow(query, project_id, week)
+
+        return dict(result) if result else None
+    except Exception as e:
+        print({"error": str(e)})
+        raise HTTPException(status_code=500, detail="Error fetching submission status (Service)")
+    finally:
+        await conn.close()
+
+
 # Register each week's progress as completed or incomplete
 async def register_progress(project_id: str, progress_score: int, progress_comment: str, upload_link: str, submission_status: str):
     conn = await asyncpg.connect(DATABASE_URL)

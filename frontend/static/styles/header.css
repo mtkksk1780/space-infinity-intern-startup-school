@@ -49,7 +49,10 @@
   font: "Jersey_20";
 }
 
-
+.logged-in {
+  font-weight: bold;
+  font-family: "Jersey_20";
+}
 
 
 /* hamburger-menu */

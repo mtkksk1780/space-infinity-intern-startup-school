@@ -21,7 +21,6 @@ def header_html():
             Nav(
                 Ul(
                     Li(A("Home", href="/")),
-                    
                     Li(A("About", href="#")),
                     Li(A("Login", href="/login")),
                     # Li(A("Sign Up", href="/signup")),
@@ -85,12 +84,69 @@ def header_html():
                         }
                         
                         // Update links [2]
+                        $('#project_link').attr('href', '/project/' + project_id);
                         $('#submission_link').attr('href', '/submission/' + project_id);
                         $('#history_link').attr('href', '/history/' + project_id);
                         $('#feedback_link').attr('href', '/feedback');
+
+                        // Get the project's countdown time
+                        fetch(backend_path + '/countdown/' + project_id, {
+                            method: 'POST',
+                            credentials: 'include',
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            const countdown = data.countdown;
+                            let current_week = data.current_week;
+                            console.log("header.py countdown:", countdown);
+                            console.log("header.py current_week:", current_week);
+
+                            if (countdown === undefined || typeof countdown !== 'string') {
+                                console.error("Error fetching countdown");
+                                return;
+                            }
+
+                            // If the previous week's progress is not submitted, automatically update the status as incomplete.
+                            if (current_week !== 1) {
+                                console.log(`Check if the previous weeks' progress has been submitted`);
+                                if (current_week > 5) {
+                                    current_week = 5;
+                                }
+                                for (let i = 1; i < parseInt(current_week); i++) {
+                                    fetch(backend_path + '/submission/status/' + project_id + '/' + i, {
+                                        method: 'POST',
+                                        credentials: 'include',
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        const submission_status = data.submission_status;
+                                        console.log(`header.py week${i}'s status:`, submission_status);
+
+                                        // If the target week's progress is not submitted, update the progress as incomplete
+                                        if (submission_status === "Working" || submission_status === "Pending") {
+                                            console.log(`The week${i}'s progress is not submitted`);
+                                            fetch(backend_path + '/submission/incomplete/' + project_id, {
+                                                method: 'POST',
+                                                credentials: 'include',
+                                            })
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                console.log(`header.py update week${i}'s incomplete progress successfully:`, data);
+                                            })
+                                            .catch(error => console.error(`Error updating week${i}'s incomplete progress:`, error));
+                                        } else {
+                                            console.log(`The previous week${i}'s progress has already been updated`);
+                                        }
+                                    })
+                                    .catch(error => console.error(`Error fetching target week${i} status:`, error));
+                                }
+                            }
+                        })
+                        .catch(error => console.error("Error fetching countdown:", error));
                     })
                     .catch(error => console.error("Error fetching project id:", error));
                 }, 1000);
             });
         '''),
     )
+
