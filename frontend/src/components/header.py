@@ -58,6 +58,10 @@ def header_html():
                     const user_id = $('#user_id').val();
                     console.log('header.py user_id:', user_id);
 
+                    // Get current time
+                    const current_date = new Date();
+                    console.log('header.py current_date:', current_date);
+
                     if (user_id === undefined) {
                         console.log("User id is undefined");
                         return;
